@@ -20,8 +20,8 @@ function App() {
   }, [selectedLocation]);
 
   return (
-    <div className="min-h-screen bg-blue-100 p-6 flex flex-col items-center">
-      <h1 className="text-3xl font-bold mb-6 text-blue-900">Ilocos Norte Weather App</h1>
+    <div className="min-h-screen bg-indigo-900 p-6 flex flex-col items-center">
+      <h1 className="text-3xl font-bold mb-6 text-white">Ilocos Norte Weather App</h1>
       <LocationSelector selected={selectedLocation} onChange={setSelectedLocation} />
       {weatherData && (
         <div className="mt-6">
