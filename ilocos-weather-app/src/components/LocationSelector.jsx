@@ -1,8 +1,12 @@
 import { locations } from "../data/locations";
 
 const LocationSelector = ({ selected, onChange }) => (
-  <select
-    className="border p-2 rounded-lg w-full max-w-sm"
+
+  <div className="mt-1 mb-6 w-full max-w-sm">
+    <select
+    className="border border-white bg-indigo-900 text-white px-3 py-3 rounded-lg w-full max-w-sm"
+    aria-label="Select Location"
+    data-testid="location-selector"
     value={selected}
     onChange={(e) => onChange(e.target.value)}
   >
@@ -12,6 +16,8 @@ const LocationSelector = ({ selected, onChange }) => (
       </option>
     ))}
   </select>
+  </div>
+  
 );
 
 export default LocationSelector;
