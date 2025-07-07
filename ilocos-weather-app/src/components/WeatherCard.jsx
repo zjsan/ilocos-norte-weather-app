@@ -1,12 +1,15 @@
+import sunny from '../assets/sun.png';
+
+
 const WeatherCard = ({ location, weather }) => {
   return (
-    <div className="bg-white shadow-lg rounded-xl p-4 text-center">
-      <h2 className="text-xl font-semibold">{location.name}</h2>
-      <p className="text-gray-700 text-lg">
-        🌡️ {weather.temperature}°C
-      </p>
-      <p className="text-sm text-gray-500">Wind: {weather.windspeed} km/h</p>
+    <div className="w-full max-w-md mx-auto flex flex-col items-center">
+      <img src={sunny} alt="sunny-sky image" className="weather-icons" />
+      <h2 className="text-white font-semibold">{location.name}</h2>
+      <p className="text-white text-lg">🌡️ {weather.temperature}°C</p>
+      <p className="text-sm text-white">Wind: {weather.windspeed} km/h</p>
     </div>
+
   );
 };
 
