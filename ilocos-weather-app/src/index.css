@@ -1,12 +1,14 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-*,body,html {
-  margin: 0;
-  padding: 0;
+*,html {
   box-sizing: border-box;
 }
 
 body{
     font-family: "Roboto", sans-serif;
+}
+
+.weather-icons {
+  width: 50%
 }
