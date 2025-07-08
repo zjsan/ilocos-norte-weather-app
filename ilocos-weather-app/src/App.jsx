@@ -6,12 +6,13 @@ import { locations } from "./data/locations";
 function App() {
   const [selectedLocation, setSelectedLocation] = useState(locations[0].name);
   const [weatherData, setWeatherData] = useState(null);
-
+  
   const fetchWeather = async (lat, lon) => {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
     const res = await fetch(url);
     const data = await res.json();
     setWeatherData(data.current_weather);
+    console.log(data);
   };
 
   useEffect(() => {
