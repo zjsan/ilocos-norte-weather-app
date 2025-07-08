@@ -8,13 +8,33 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   
   const fetchWeather = async (lat, lon) => {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=Asia/Manila&forecast_days=1&current_weather=true`;
-    const res = await fetch(url);
-    const data = await res.json();
 
+    try {
 
-    setWeatherData(data.current_weather);
-    console.log(data);
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=Asia/Manila&forecast_days=1&current_weather=true`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (!res.ok) {
+        // If response is not OK (e.g., 404, 500), throw an error
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      // Check if hourly data exists
+      if (!data.hourly || !data.hourly.time || data.hourly.time.length === 0) {
+          displayError("No hourly weather data available for this location.");
+          return;
+      }
+
+      setWeatherData(data.current_weather);
+      console.log(data);
+
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+      displayError(`Failed to fetch weather data: ${error.message}. Please try again.`);
+    }
+    
+
   };
 
   useEffect(() => {
