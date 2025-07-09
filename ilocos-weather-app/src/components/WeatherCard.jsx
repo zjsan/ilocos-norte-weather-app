@@ -8,7 +8,7 @@ const WeatherCard = ({ location, weather }) => {
       <h2 className="weather-location text-white text-4xl font-semibold">{location.name}</h2>
       <p className="weather-temperature text-white text-xl">🌡️ {weather.weather_code}°C</p>
       <p className="weather-temperature text-white text-xl">🌡️ {weather.temperature}°C</p>
-      <p className="text-base text-white">Wind: {weather.windspeed} km/h</p>
+      <p className="text-white text-lg">💨 {weather.windspeed} km/h</p>
     
     </div>
 
