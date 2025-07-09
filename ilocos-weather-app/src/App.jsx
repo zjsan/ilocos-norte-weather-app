@@ -26,7 +26,16 @@ function App() {
           return;
       }
 
-      setWeatherData(data.current_weather);
+      const now = data.current_weather.time;
+      const index = data.hourly.time.findIndex((t) => t === now);
+
+      setWeatherData({  
+        temperature: data.current_weather.temperature,
+        windspeed: data.current_weather.windspeed,
+        humidity: data.hourly.humidity_2m[index],
+        weatherCode: data.current_weather.weathercode,
+        time: now
+  });
       console.log(data);
 
     } catch (error) {
