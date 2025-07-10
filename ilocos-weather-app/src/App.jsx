@@ -34,6 +34,7 @@ function App() {
        // Iterate through hourly times to find the latest time that is less than or equal to nowTimestamp
       for (let i = 0; i < data.hourly.time.length; i++) {
         const hourlyTimestamp = new Date(data.hourly.time[i]).getTime();
+        console.log(`Checking hourly time: ${data.hourly.time[i]} (timestamp: ${hourlyTimestamp}) against current time: ${nowTimestamp}`);
         if (hourlyTimestamp <= nowTimestamp) {
           index = i;
         } else {
@@ -70,7 +71,9 @@ function App() {
         hour12: true,
       });
 
-
+      console.log(dateTime, formattedDate, formattedTime);  
+      console.log(lat);
+      console.log(lon);
        // Set the processed weather data
       setWeatherData({
         city: selectedLocation, // Use the selected city name
