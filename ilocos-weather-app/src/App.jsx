@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LocationSelector from "./components/LocationSelector";
 import WeatherCard from "./components/WeatherCard";
 import { locations } from "./data/locations";
+import { weatherCodeMap } from "./data/weathercode";
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState(locations[0].name);
@@ -14,7 +15,8 @@ function App() {
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=Asia/Manila&forecast_days=1&current_weather=true`;
       const res = await fetch(url);
       const data = await res.json();
-
+     
+      
       if (!res.ok) {
         // If response is not OK (e.g., 404, 500), throw an error
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -26,7 +28,60 @@ function App() {
           return;
       }
 
-      setWeatherData(data.current_weather);
+      const nowTimestamp = new Date(data.current_weather.time).getTime();
+      let index = -1;
+
+       // Iterate through hourly times to find the latest time that is less than or equal to nowTimestamp
+      for (let i = 0; i < data.hourly.time.length; i++) {
+        const hourlyTimestamp = new Date(data.hourly.time[i]).getTime();
+        if (hourlyTimestamp <= nowTimestamp) {
+          index = i;
+        } else {
+          // Since the hourly.time array is sorted, if we've passed the current time,
+          // the previous index is the closest valid one.
+          break;
+        }
+      }
+
+      if (index === -1) {
+        index = 0;
+        console.warn("Could not find a past or exact hourly data point for current time. Using the first available hourly entry.");
+      }  
+
+      // Extract relevant data for the current hour
+      const currentTemperature = data.hourly.temperature_2m[index];
+      const currentHumidity = data.hourly.relative_humidity_2m[index];
+      const currentWindSpeed = data.hourly.wind_speed_10m[index];
+      const currentWeatherCode = data.hourly.weather_code[index];
+
+      // Map weather code to a descriptive string
+      const weatherType = weatherCodeMap[currentWeatherCode] || 'Unknown';
+
+      // Format date and time for display
+      const dateTime = new Date(data.current_weather.time);
+      const formattedDate = dateTime.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+      const formattedTime = dateTime.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      });
+
+
+       // Set the processed weather data
+      setWeatherData({
+        city: selectedLocation, // Use the selected city name
+        temperature: currentTemperature,
+        humidity: currentHumidity,
+        windSpeed: currentWindSpeed,
+        weatherType: weatherType,
+        date: formattedDate,
+        time: formattedTime,
+      });
+
       console.log(data);
 
     } catch (error) {
@@ -34,7 +89,6 @@ function App() {
       displayError(`Failed to fetch weather data: ${error.message}. Please try again.`);
     }
     
-
   };
 
   useEffect(() => {
