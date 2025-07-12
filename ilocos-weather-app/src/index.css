@@ -7,4 +7,13 @@
 
 body{
     font-family: "Roboto", sans-serif;
+
 }
+.main-container{
+  background-image: url('./assets/sea-with-boats-distance-cloudy-sky.jpg'); /* Relative path to your image */
+    background-size: cover; /* Adjust as needed */
+    background-position: center;
+    min-height: 100vh; /* Example for full-screen background */
+    
+}
+
