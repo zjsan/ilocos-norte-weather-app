@@ -100,10 +100,10 @@ function App() {
   }, [selectedLocation]);
 
   return (
-    <div className="min-h-screen bg-indigo-900 p-6 flex flex-col items-center">
+    <div className="bg-blue-300 min-h-screen p-6 flex flex-col items-center">
       <div className="text-center mt-11">
-        <h1 className="text-3xl font-bold text-white">Amianan Forecast</h1>
-        <h2 className=" text-white mt-2 mb-4 ">Ilocos Norte Weather App</h2>
+        <h1 className="text-3xl font-bold text-white drop-shadow-sm">Amianan Forecast</h1>
+        <h2 className=" text-white mt-2 mb-4 drop-shadow-sm">Ilocos Norte Weather App</h2>
       </div>
       
       <LocationSelector selected={selectedLocation} onChange={setSelectedLocation} />
