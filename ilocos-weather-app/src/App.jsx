@@ -100,7 +100,7 @@ function App() {
   }, [selectedLocation]);
 
   return (
-    <div className="bg-blue-300 min-h-screen p-6 flex flex-col items-center">
+    <div className="bg-indigo-900 min-h-screen p-3 flex flex-col items-center">
       <div className="text-center mt-11">
         <h1 className="text-3xl font-bold text-white drop-shadow-sm">Amianan Forecast</h1>
         <h2 className=" text-white mt-2 mb-4 drop-shadow-sm">Ilocos Norte Weather App</h2>
@@ -108,7 +108,7 @@ function App() {
       
       <LocationSelector selected={selectedLocation} onChange={setSelectedLocation} />
       {weatherData && (
-        <div className="mt-6">
+        <div className="mt-1">
           <WeatherCard location={locations.find(l => l.name === selectedLocation)} weather={weatherData} />
         </div>
       )}
