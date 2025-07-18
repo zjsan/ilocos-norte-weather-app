@@ -60,11 +60,11 @@ const WeatherCard = ({ weather }) => {
       <p className="weather-temperature text-white text-xl drop-shadow-sm">
         {weather.weatherType}
       </p>
-      <div className="flex flex-row justify-around text-base w-full">
-        <p className="weather-temperature text-white drop-shadow-sm">
+      <div className="flex flex-row justify-center gap-5 text-base w-full">
+        <p className="weather-temperature text-white drop-shadow-sm text-center">
           Humidity: {weather.humidity}
         </p>
-        <p className="text-white  drop-shadow-sm">
+        <p className="text-white  drop-shadow-sm  text-center">
           Wind Speed: {weather.windSpeed} km/h
         </p>
       </div>
