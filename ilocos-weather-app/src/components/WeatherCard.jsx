@@ -38,7 +38,6 @@ const WeatherCard = ({ weather }) => {
     }
   }
 
-  console.log(weather.weatherType);
   return (
     <div className="mt-1 space-y-3 text-center p-5 bg-transparent ring-0">
       <p className="weather-temperature text-white text-xl drop-shadow-sm">
