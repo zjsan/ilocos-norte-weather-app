@@ -99,7 +99,6 @@ function App() {
     if (loc) fetchWeather(loc.lat, loc.lon);
   }, [selectedLocation]);
 
-  console.log(weatherData.weatherType);
   return (
     <div className="bg-indigo-900 min-h-screen p-3 flex flex-col items-center">
       <div className="text-center mt-11">
