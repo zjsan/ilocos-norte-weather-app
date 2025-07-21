@@ -39,7 +39,7 @@ const WeatherCard = ({ weather }) => {
   }
 
   return (
-    <div className="mt-1 space-y-3 text-center p-5 bg-transparent ring-0">
+    <div className="mt-1 space-y-3 text-center p-5 bg-transparent ring-0 ">
       <p className="weather-temperature text-white text-xl drop-shadow-sm">
         {" "}
         Today, {weather.date}
@@ -59,7 +59,7 @@ const WeatherCard = ({ weather }) => {
       <p className="weather-temperature text-white text-xl drop-shadow-sm">
         {weather.weatherType}
       </p>
-      <div className="flex flex-row justify-center gap-5 text-base w-full">
+      <div className="flex flex-row justify-center gap-5 text-base w-full ">
         <p className="weather-temperature text-white drop-shadow-sm text-center">
           Humidity: {weather.humidity}
         </p>
