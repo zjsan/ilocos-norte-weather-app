@@ -120,7 +120,7 @@ function App() {
       case 'Rain showers: Slight':
       case 'Rain showers: Moderate':
       case 'Rain showers: Violent':
-        return 'from-blue-600 to-blue-800'; // Rainy
+        return 'from-blue-900 to-indigo-400'; // Rainy
       case 'Freezing Drizzle: Light':
       case 'Freezing Drizzle: Dense intensity':
       case 'Freezing Rain: Light':
