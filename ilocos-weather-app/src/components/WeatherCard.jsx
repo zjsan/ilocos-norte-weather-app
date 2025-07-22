@@ -58,7 +58,7 @@ const WeatherCard = ({ weather }) => {
         alt="Weather Icon"
       />
 
-      <p className="weather-temperature text-white text-5xl drop-shadow-sm">
+      <p className="weather-temperature text-white text-8xl drop-shadow-sm">
         {weather.temperature}°
       </p>
       <p className="weather-temperature text-white text-xl drop-shadow-sm">
