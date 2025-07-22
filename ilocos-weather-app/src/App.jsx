@@ -99,8 +99,46 @@ function App() {
     if (loc) fetchWeather(loc.lat, loc.lon);
   }, [selectedLocation]);
 
+  // Function to determine background class based on weather type
+  const getBackgroundClass = (weatherType) => {
+    switch (weatherType) {
+      case 'Clear sky':
+      case 'Mainly clear':
+        return 'from-blue-300 to-blue-600'; // Sunny day
+      case 'Partly cloudy':
+      case 'Overcast':
+        return 'from-gray-400 to-gray-600'; // Cloudy day
+      case 'Fog':
+      case 'Depositing rime fog':
+        return 'from-gray-500 to-gray-700'; // Foggy
+      case 'Drizzle: Light':
+      case 'Drizzle: Moderate':
+      case 'Drizzle: Dense intensity':
+      case 'Rain: Slight':
+      case 'Rain: Moderate':
+      case 'Rain: Heavy intensity':
+      case 'Rain showers: Slight':
+      case 'Rain showers: Moderate':
+      case 'Rain showers: Violent':
+        return 'from-blue-600 to-blue-800'; // Rainy
+      case 'Freezing Drizzle: Light':
+      case 'Freezing Drizzle: Dense intensity':
+      case 'Freezing Rain: Light':
+      case 'Freezing Rain: Heavy intensity':
+        return 'from-gray-300 to-gray-500'; // Snowy/Icy (though unlikely in Ilocos Norte, good for completeness)
+      case 'Thunderstorm: Slight or moderate':
+      case 'Thunderstorm with slight hail':
+      case 'Thunderstorm with heavy hail':
+        return 'from-purple-700 to-indigo-900'; // Thunderstorm
+      default:
+        return 'from-blue-400 to-purple-600'; // Default gradient
+    }
+  };
+
+  const backgroundClass = weatherData ? getBackgroundClass(weatherData.weatherType) : 'from-blue-400 to-purple-600';
+
   return (
-    <div className="bg-gradient-to-br from-blue-400 to-purple-800 min-h-screen p-3 flex flex-col items-center">
+    <div className={`bg-gradient-to-br ${backgroundClass} min-h-screen p-3 flex flex-col items-center`}>
       <div className="text-center mt-11">
         <h1 className="text-3xl font-bold text-white drop-shadow-sm">Amianan Forecast</h1>
         <h2 className=" text-white mt-2 mb-4 drop-shadow-sm">Ilocos Norte Weather App</h2>
