@@ -59,7 +59,7 @@ const WeatherCard = ({ weather }) => {
       />
 
       <p className="text-white text-7xl drop-shadow-sm text-center mx-auto">
-        {weather.temperature}°
+        {weather.temperature}°C
       </p>
       <p className="weather-temperature text-white text-xl drop-shadow-sm">
         {weather.weatherType}
