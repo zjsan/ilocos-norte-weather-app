@@ -117,14 +117,58 @@ function App() {
           lat: position.coords.latitude,
           lon: position.coords.longitude,
         });
-      })
+      }),
+      (GeolocationPositionError) => {
+        setUserLocation(null);
+        let errorMessage = "Failed to retrieve your location";
+
+        switch(GeolocationPositionError.code){
+          case GeolocationPositionError.PERMISSION_DENIED:
+            errorMessage = "Permission to access location was denied. Please select from the dropdown.";
+            break;
+          case GeolocationPositionError.POSITION_UNAVAILABLE:
+            errorMessage = "Location information is unavailable. Please select from the dropdown.";
+            break;
+          case GeolocationPositionError.TIMEOUT:
+            errorMessage = "The request to get user location timed out. Please select from the dropdown.";
+            break;
+          default:
+            errorMessage = "An unknown error occurred while getting your location. Please select from the dropdown."
+            break;      
+        }
+        setError(errorMessage);
+        setSelectedLocation(locations[0].name);  // Fallback to default selected location if geolocation fails
+      },
+      {  enableHighAccuracy: true, timeout: 10000, maximumAge: 0 } // Options for geolocation}
+    }else{
+      setError("Geolocation is not supported by your browser. Please select from the dropdown.")
+      setSelectedLocation(locations[0].name);  // Fallback to default selected location if geolocation fails
+      setHasAttemptedGeolocation(true);
     }
   }
 
   useEffect(() => {
-    const loc = locations.find((l) => l.name === selectedLocation);
-    if (loc) fetchWeather(loc.lat, loc.lon);
-  }, [selectedLocation]);
+    getUserGeolocation();
+  }, []);//runs once on mount
+
+    // Effect to fetch weather based on location state
+  useEffect(() => {
+    if (userlocation) {
+      // If userLocation is available, fetch weather for it
+      fetchWeather(userlocation.lat, userlocation.lon, 'Current Location');
+      setSelectedLocation(''); // Ensure dropdown is not showing a selected city
+    } else if (hasAttemptedGeolocation && !userlocation && !selectedLocation && locations.length > 0) { // Fixed missing array reference
+      // If geolocation was attempted and failed, and no city is selected yet,
+      // default to the first city in the list.
+      setSelectedLocation(locations[0].name);
+    } else if (selectedLocation) {
+      // If a city is selected (either by default or user selection), fetch its weather
+      const loc = locations.find((l) => l.name === selectedLocation);
+      if (loc) {
+        fetchWeather(loc.lat, loc.lon, loc.name);
+      }
+    }
+  }, [selectedLocation, userlocation, hasAttemptedGeolocation]); // Dependencies for this effect
 
   // Function to determine background class based on weather type
   const getBackgroundClass = (weatherType) => {
