@@ -238,7 +238,11 @@ function App() {
 
       <LocationSelector
         selected={selectedLocation}
-        onChange={setSelectedLocation}
+        onChange={(value) => {
+          setSelectedLocation(value);
+          setUserLocation(null); // Clear user location if user selects from dropdown
+        }}
+        locations={locations}
       />
 
       {/* Loading and Error States */}
