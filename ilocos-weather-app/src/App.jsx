@@ -5,7 +5,7 @@ import { locations } from "./data/locations";
 import { weatherCodeMap } from "./data/weathercode";
 
 function App() {
-  const [selectedLocation, setSelectedLocation] = useState('');// Initialize empty, will be set by geo or default
+  const [selectedLocation, setSelectedLocation] = useState(""); // Initialize empty, will be set by geo or default
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -100,64 +100,77 @@ function App() {
       displayError(
         `Failed to fetch weather data: ${error.message}. Please try again.`
       );
-      setError(`Failed to fetch weather data: ${err.message}. Please try again.`);
-    }
-    finally{
+      setError(
+        `Failed to fetch weather data: ${err.message}. Please try again.`
+      );
+    } finally {
       setLoading(false);
     }
   };
 
   const getUserGeolocation = () => {
-    setHasAttemptedGeolocation(true)//setting true to mark trying geolocation
-    setError(null)//clear errors 
+    setHasAttemptedGeolocation(true); //setting true to mark trying geolocation
+    setError(null); //clear errors
 
-    if(navigator.geolocation){
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setUserLocation({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
         });
       }),
-      (GeolocationPositionError) => {
-        setUserLocation(null);
-        let errorMessage = "Failed to retrieve your location";
+        (GeolocationPositionError) => {
+          setUserLocation(null);
+          let errorMessage = "Failed to retrieve your location";
 
-        switch(GeolocationPositionError.code){
-          case GeolocationPositionError.PERMISSION_DENIED:
-            errorMessage = "Permission to access location was denied. Please select from the dropdown.";
-            break;
-          case GeolocationPositionError.POSITION_UNAVAILABLE:
-            errorMessage = "Location information is unavailable. Please select from the dropdown.";
-            break;
-          case GeolocationPositionError.TIMEOUT:
-            errorMessage = "The request to get user location timed out. Please select from the dropdown.";
-            break;
-          default:
-            errorMessage = "An unknown error occurred while getting your location. Please select from the dropdown."
-            break;      
-        }
-        setError(errorMessage);
-        setSelectedLocation(locations[0].name);  // Fallback to default selected location if geolocation fails
-      },
-      {  enableHighAccuracy: true, timeout: 10000, maximumAge: 0 } // Options for geolocation}
-    }else{
-      setError("Geolocation is not supported by your browser. Please select from the dropdown.")
-      setSelectedLocation(locations[0].name);  // Fallback to default selected location if geolocation fails
+          switch (GeolocationPositionError.code) {
+            case GeolocationPositionError.PERMISSION_DENIED:
+              errorMessage =
+                "Permission to access location was denied. Please select from the dropdown.";
+              break;
+            case GeolocationPositionError.POSITION_UNAVAILABLE:
+              errorMessage =
+                "Location information is unavailable. Please select from the dropdown.";
+              break;
+            case GeolocationPositionError.TIMEOUT:
+              errorMessage =
+                "The request to get user location timed out. Please select from the dropdown.";
+              break;
+            default:
+              errorMessage =
+                "An unknown error occurred while getting your location. Please select from the dropdown.";
+              break;
+          }
+          setError(errorMessage);
+          setSelectedLocation(locations[0].name); // Fallback to default selected location if geolocation fails
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }; // Options for geolocation}
+    } else {
+      setError(
+        "Geolocation is not supported by your browser. Please select from the dropdown."
+      );
+      setSelectedLocation(locations[0].name); // Fallback to default selected location if geolocation fails
       setHasAttemptedGeolocation(true);
     }
-  }
+  };
 
   useEffect(() => {
     getUserGeolocation();
-  }, []);//runs once on mount
+  }, []); //runs once on mount
 
-    // Effect to fetch weather based on location state
+  // Effect to fetch weather based on location state
   useEffect(() => {
     if (userlocation) {
       // If userLocation is available, fetch weather for it
-      fetchWeather(userlocation.lat, userlocation.lon, 'Current Location');
-      setSelectedLocation(''); // Ensure dropdown is not showing a selected city
-    } else if (hasAttemptedGeolocation && !userlocation && !selectedLocation && locations.length > 0) { // Fixed missing array reference
+      fetchWeather(userlocation.lat, userlocation.lon, "Current Location");
+      setSelectedLocation(""); // Ensure dropdown is not showing a selected city
+    } else if (
+      hasAttemptedGeolocation &&
+      !userlocation &&
+      !selectedLocation &&
+      locations.length > 0
+    ) {
+      // Fixed missing array reference
       // If geolocation was attempted and failed, and no city is selected yet,
       // default to the first city in the list.
       setSelectedLocation(locations[0].name);
@@ -227,6 +240,24 @@ function App() {
         selected={selectedLocation}
         onChange={setSelectedLocation}
       />
+
+      {/* Loading and Error States */}
+      {loading && (
+        <div className="text-center text-white font-semibold text-lg mt-4">
+          Loading weather data...
+        </div>
+      )}
+
+      {error && (
+        <div
+          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md relative mt-4"
+          role="alert"
+        >
+          <strong className="font-bold">Error!</strong>
+          <span className="block sm:inline ml-2">{error}</span>
+        </div>
+      )}
+
       {weatherData && (
         <div className="mt-1">
           <WeatherCard
