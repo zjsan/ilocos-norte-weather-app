@@ -7,8 +7,16 @@ import { weatherCodeMap } from "./data/weathercode";
 function App() {
   const [selectedLocation, setSelectedLocation] = useState(locations[0].name);
   const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [userlocation, setUserLocation] = useState(null);
+  const [hasAttemptedGeolocation, setHasAttemptedGeolocation] = useState(false); //to check if the geolocation is actie
 
-  const fetchWeather = async (lat, lon) => {
+  const fetchWeather = async (lat, lon, locationName = "Current Location") => {
+    setLoading(true);
+    setError(null);
+    setWeatherData(null);
+
     try {
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=Asia/Manila&forecast_days=1&current_weather=true`;
       const res = await fetch(url);
@@ -77,7 +85,7 @@ function App() {
       console.log(lon);
       // Set the processed weather data
       setWeatherData({
-        city: selectedLocation, // Use the selected city name
+        city: locationName, // Use the selected city name
         temperature: currentTemperature,
         humidity: currentHumidity,
         windSpeed: currentWindSpeed,
@@ -92,6 +100,10 @@ function App() {
       displayError(
         `Failed to fetch weather data: ${error.message}. Please try again.`
       );
+      setError(`Failed to fetch weather data: ${err.message}. Please try again.`);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
