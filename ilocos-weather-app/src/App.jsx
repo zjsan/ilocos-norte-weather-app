@@ -170,7 +170,6 @@ function App() {
       !selectedLocation &&
       locations.length > 0
     ) {
-      // Fixed missing array reference
       // If geolocation was attempted and failed, and no city is selected yet,
       // default to the first city in the list.
       setSelectedLocation(locations[0].name);
