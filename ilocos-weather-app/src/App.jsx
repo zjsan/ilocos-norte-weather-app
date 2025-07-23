@@ -5,7 +5,7 @@ import { locations } from "./data/locations";
 import { weatherCodeMap } from "./data/weathercode";
 
 function App() {
-  const [selectedLocation, setSelectedLocation] = useState(locations[0].name);
+  const [selectedLocation, setSelectedLocation] = useState('');// Initialize empty, will be set by geo or default
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -106,6 +106,20 @@ function App() {
       setLoading(false);
     }
   };
+
+  const getUserGeolocation = () => {
+    setHasAttemptedGeolocation(true)//setting true to mark trying geolocation
+    setError(null)//clear errors 
+
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position) => {
+        setUserLocation({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        });
+      })
+    }
+  }
 
   useEffect(() => {
     const loc = locations.find((l) => l.name === selectedLocation);
