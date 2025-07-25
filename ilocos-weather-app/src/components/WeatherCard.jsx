@@ -2,10 +2,9 @@ import sunny from "../assets/sun.png";
 import rain from "../assets/heavy-rain.png";
 import clouds from "../assets/clouds.png";
 import storm from "../assets/storm.png";
-import { quotes  } from "../data/weatherTips";
+import { quotes } from "../data/weatherTips";
 
 const WeatherCard = ({ weather }) => {
-
   function renderWeatherImage() {
     if (
       weather.weatherType === "Clear sky" ||
@@ -40,8 +39,7 @@ const WeatherCard = ({ weather }) => {
     }
   }
 
- const tip = quotes [weather.weatherType] || "Stay prepared for any weather!";
-
+  const tip = quotes[weather.weatherType] || "Stay prepared for any weather!";
 
   return (
     <div className="mt-1 space-y-3 text-center p-5 bg-transparent ring-0 ">
@@ -67,18 +65,17 @@ const WeatherCard = ({ weather }) => {
       <div className="flex flex-row justify-center gap-5 text-base w-full ">
         <div>
           <p className="weather-temperature text-white drop-shadow-sm text-center">
-          Humidity: {weather.humidity}
-        </p>
+            Humidity: {weather.humidity}
+          </p>
         </div>
         <div>
-           <p className="text-white  drop-shadow-sm  text-center">
-          Wind Speed: {weather.windSpeed} km/h
+          <p className="text-white  drop-shadow-sm  text-center">
+            Wind Speed: {weather.windSpeed} km/h
           </p>
         </div>
       </div>
 
       <p className="text-white  drop-shadow-sm  text-center">{tip}</p>
-
     </div>
   );
 };
