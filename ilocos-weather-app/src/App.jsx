@@ -160,30 +160,43 @@ function App() {
     getUserGeolocation();
   }, []); //runs once on mount
 
-  // Effect to fetch weather based on location state
+  // Effect to fetch weather based on location state and set up periodic refresh
   useEffect(() => {
-    if (userlocation) {
-      // If userLocation is available, fetch weather for it
-      fetchWeather(userlocation.lat, userlocation.lon, "Current Location");
-      setSelectedLocation(""); // Ensure dropdown is not showing a selected city
-      console.log("Geolocation is being used");
-    } else if (
-      hasAttemptedGeolocation &&
-      !userlocation &&
-      !selectedLocation &&
-      locations.length > 0
-    ) {
-      // If geolocation was attempted and failed, and no city is selected yet,
-      // default to the first city in the list.
-      setSelectedLocation(locations[0].name);
-    } else if (selectedLocation) {
-      // If a city is selected (either by default or user selection), fetch its weather
-      const loc = locations.find((l) => l.name === selectedLocation);
-      if (loc) {
-        fetchWeather(loc.lat, loc.lon, loc.name);
+    const refreshIntervalMs = 1 * 60 * 1000; // 5 minutes interval for periodic refresh
+    let intervalId;
+
+    const fetchData = () => {
+      if (userlocation) {
+        // If userLocation is available, fetch weather for it
+        fetchWeather(userlocation.lat, userlocation.lon, "Current Location");
+        setSelectedLocation(""); // Ensure dropdown is not showing a selected city
+        console.log("Geolocation is being used");
+      } else if (
+        hasAttemptedGeolocation &&
+        !userlocation &&
+        !selectedLocation &&
+        locations.length > 0
+      ) {
+        // If geolocation was attempted and failed, and no city is selected yet,
+        // default to the first city in the list.
+        setSelectedLocation(locations[0].name);
+      } else if (selectedLocation) {
+        // If a city is selected (either by default or user selection), fetch its weather
+        const loc = locations.find((l) => l.name === selectedLocation);
+        if (loc) {
+          fetchWeather(loc.lat, loc.lon, loc.name);
+        }
+        console.log("Selected from the dropdown");
       }
-      console.log("Selected from the dropdown");
-    }
+    };
+
+    // Call immediately on mount/dependency change
+    fetchData();
+
+    // Set up the interval
+    intervalId = setInterval(fetchData, refreshIntervalMs);
+
+    return () => clearInterval(intervalId);
   }, [selectedLocation, userlocation, hasAttemptedGeolocation]); // Dependencies for this effect
 
   // Function to determine background class based on weather type
