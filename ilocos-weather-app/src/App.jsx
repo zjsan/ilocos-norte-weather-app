@@ -3,6 +3,7 @@ import LocationSelector from "./components/LocationSelector";
 import WeatherCard from "./components/WeatherCard";
 import { locations } from "./data/locations";
 import { weatherCodeMap } from "./data/weathercode";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState(""); // Initialize empty, will be set by geo or default
@@ -286,7 +287,10 @@ function App() {
           />
         </div>
       )}
+
+      <Footer />
     </div>
+    
   );
 }
 
