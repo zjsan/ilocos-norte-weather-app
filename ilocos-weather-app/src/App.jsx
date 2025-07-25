@@ -108,10 +108,12 @@ function App() {
     }
   };
 
+  //geolocation logic
   const getUserGeolocation = () => {
     setHasAttemptedGeolocation(true); //setting true to mark trying geolocation
     setError(null); //clear errors
 
+    //if activated or working do something here
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setUserLocation({
