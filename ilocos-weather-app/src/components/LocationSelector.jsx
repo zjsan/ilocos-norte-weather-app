@@ -9,15 +9,13 @@ const LocationSelector = ({ selected, onChange }) => (
       value={selected ?? ''}
       onChange={(e) => onChange(e.target.value)}
     >
-      {locations.length > 0 ? (
-        locations.map((loc) => (
+      {selected === null && <option value="">Select a location</option>}
+      {locations.map((loc) => (
           <option key={loc.name} value={loc.name}>
             {loc.name}
           </option>
         ))
-      ) : (
-        <option value="">No locations available</option>
-      )}
+      }
     </select>
   </div>
 );
