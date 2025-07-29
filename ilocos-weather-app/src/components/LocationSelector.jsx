@@ -16,7 +16,7 @@ const LocationSelector = ({ selected, onChange }) => (
           </option>
         ))
       ) : (
-        <option value="">No locations available</option>
+        <option value={selected}>No locations available</option>
       )}
     </select>
   </div>
