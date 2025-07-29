@@ -180,7 +180,9 @@ function App() {
       ) {
         // If geolocation was attempted and failed, and no city is selected yet,
         // default to the first city in the list.
-        setSelectedLocation(locations[0].name);
+        console.log("Using default location from the list");
+        const loc = locations[0];
+        setSelectedLocation(loc.name);
       } else if (selectedLocation) {
         // If a city is selected (either by default or user selection), fetch its weather
         const loc = locations.find((l) => l.name === selectedLocation);
