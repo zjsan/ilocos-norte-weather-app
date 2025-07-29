@@ -170,7 +170,7 @@ function App() {
       if (userlocation) {
         // If userLocation is available, fetch weather for it
         fetchWeather(userlocation.lat, userlocation.lon, "Current Location");
-        setSelectedLocation(""); // Ensure dropdown is not showing a selected city
+        setSelectedLocation(null); // Ensure dropdown is not showing a selected city
         console.log("Geolocation is being used");
       } else if (
         hasAttemptedGeolocation &&
