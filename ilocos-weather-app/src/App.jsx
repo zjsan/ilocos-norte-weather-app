@@ -243,60 +243,23 @@ function App() {
     : "from-blue-400 to-purple-600";
 
   return (
-
     <BrowserRouter>
-      <div
-      className={`bg-gradient-to-br ${backgroundClass} min-h-screen p-2 flex flex-col items-center`}
-    >
-      <div className="text-center mt-11">
-        <h1 className="text-3xl font-bold text-white drop-shadow-sm">
-          Amianan Forecast
-        </h1>
-        <h2 className=" text-white mt-2 mb-4 drop-shadow-sm">
-          Ilocos Norte Weather App
-        </h2>
-      </div>
-
-      <LocationSelector
-        selected={selectedLocation}
-        onChange={(value) => {
-          setSelectedLocation(value);
-          setUserLocation(null); // Clear user location if user selects from dropdown
-        }}
-        locations={locations}
-      />
-
-      {/* Loading and Error States */}
-      {loading && (
-        <div className="text-center text-white font-semibold text-lg mt-4">
-          Loading weather data...
-        </div>
-      )}
-
-      {error && (
-        <div
-          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md relative mt-4"
-          role="alert"
-        >
-          <strong className="font-bold">Error!</strong>
-          <span className="block sm:inline ml-2">{error}</span>
-        </div>
-      )}
-
-      {weatherData && (
-        <div className="mt-1">
-          <WeatherCard
-            location={locations.find((l) => l.name === selectedLocation)}
-            weather={weatherData}
-          />
-        </div>
-      )}
-
-      <Footer />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              selectedLocation={selectedLocation}
+              setSelectedLocation={setSelectedLocation}
+              weatherData={weatherData}
+              loading={loading}
+              error={error}
+              backgroundClass={backgroundClass}
+            />
+          }
+        ></Route>
+      </Routes>
     </BrowserRouter>
-    
-    
   );
 }
 
