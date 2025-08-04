@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LocationSelector from "./components/LocationSelector";
 import WeatherCard from "./components/WeatherCard";
 import { locations } from "./data/locations";
@@ -243,7 +245,9 @@ function App() {
     : "from-blue-400 to-purple-600";
 
   return (
-    <div
+
+    <BrowserRouter>
+      <div
       className={`bg-gradient-to-br ${backgroundClass} min-h-screen p-2 flex flex-col items-center`}
     >
       <div className="text-center mt-11">
@@ -292,6 +296,8 @@ function App() {
 
       <Footer />
     </div>
+    </BrowserRouter>
+    
     
   );
 }
