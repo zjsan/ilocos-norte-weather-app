@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LocationSelector from "./components/LocationSelector";
-import WeatherCard from "./components/WeatherCard";
+import { Home } from "./components/Home";
 import { locations } from "./data/locations";
 import { weatherCodeMap } from "./data/weathercode";
-import { Footer } from "./components/Footer";
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState(""); // Initialize empty, will be set by geo or default
