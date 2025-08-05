@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { locations } from "./data/locations";
 import { weatherCodeMap } from "./data/weathercode";
+import {About} from "./components/About";
+
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState(""); // Initialize empty, will be set by geo or default
@@ -258,6 +260,7 @@ function App() {
             />
           }
         ></Route>
+        <Route path="about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
