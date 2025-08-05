@@ -60,7 +60,8 @@ export const Home = ({
 
       <Footer />
 
-      <button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>About the App</button>
+      <button className="btn 	
+bg-gray-300" onClick={()=>document.getElementById('my_modal_3').showModal()}>About the App</button>
 <dialog id="my_modal_3" className="modal">
   <div className="modal-box">
     <form method="dialog">
