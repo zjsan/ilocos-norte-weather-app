@@ -3,6 +3,7 @@ import WeatherCard from "../components/WeatherCard";
 import { locations } from "../data/locations";
 import { weatherCodeMap } from "../data/weathercode";
 import { Footer } from "../components/Footer";
+import alert from "../assets/caution.png";
 
 export const Home = ({
   selectedLocation,
@@ -18,8 +19,7 @@ export const Home = ({
     >
 
       <div className="flex justify-end w-full">
-          <button className="btn 	
-bg-gray-300 " onClick={()=>document.getElementById('my_modal_3').showModal()}>About the App</button>
+          <button className="cursor-pointer" onClick={()=>document.getElementById('my_modal_3').showModal()}>About the App</button>
 <dialog id="my_modal_3" className="modal">
   <div className="modal-box">
     <form method="dialog">
