@@ -2,7 +2,7 @@
 export const About = () => {
   return (
     <div>
-       <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
+       <div className="bg-gray-100 p-8 rounded-xl w-full h-screen max-w-md text-center">
       <h1 className="text-3xl font-bold text-gray-900 mb-4">About This App</h1>
       <p className="text-lg text-gray-700">
         This is a weather application for Ilocos Norte, Philippines. It fetches real-time weather data
