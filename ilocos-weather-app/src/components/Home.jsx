@@ -19,7 +19,7 @@ export const Home = ({
     >
 
       <div className="flex justify-end w-full">
-          <button className="cursor-pointer" onClick={()=>document.getElementById('my_modal_3').showModal()}>About the App</button>
+          <button className="cursor-pointer" onClick={()=>document.getElementById('my_modal_3').showModal()}><img className="w-10" src={alert} alt="alert icon"/></button>
 <dialog id="my_modal_3" className="modal">
   <div className="modal-box">
     <form method="dialog">
