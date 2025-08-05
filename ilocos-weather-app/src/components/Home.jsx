@@ -28,7 +28,7 @@ export const Home = ({
     </form>
     <h3 className="font-bold text-lg text-center">Amianan Forecast</h3>
     <p className="py-4 text-justify">  This is a weather application for the different cities and municipalities in Ilocos Norte, Philippines. It fetches real-time weather data
-        from the Open-Meteo API. The application can automatically detect your current location
+        from the Open-Meteo API which can be accessed using this link: https://open-meteo.com/. The application can automatically detect your current location
         (with your permission) or you can manually select a city from the dropdown list.</p>
   </div>
 </dialog>
