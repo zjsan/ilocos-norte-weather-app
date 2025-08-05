@@ -1,5 +1,5 @@
 
-export default About = () => {
+export const About = () => {
   return (
     <div>
        <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
