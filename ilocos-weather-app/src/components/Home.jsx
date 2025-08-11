@@ -14,6 +14,7 @@ export const Home = ({
   backgroundClass,
 }) => {
   return (
+    
     <div
       className={`bg-gradient-to-br ${backgroundClass} min-h-screen p-2 flex flex-col items-center`}
     >
