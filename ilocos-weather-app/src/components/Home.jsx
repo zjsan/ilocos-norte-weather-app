@@ -1,9 +1,9 @@
 import LocationSelector from "../components/LocationSelector";
 import WeatherCard from "../components/WeatherCard";
 import { locations } from "../data/locations";
-import { weatherCodeMap } from "../data/weathercode";
 import { Footer } from "../components/Footer";
 import alert from "../assets/caution.png";
+import { Link } from "react-router-dom";
 
 export const Home = ({
   selectedLocation,
@@ -88,6 +88,12 @@ export const Home = ({
         </div>
       )}
       <Footer />
+      <div
+        className="text-white text-center 
+underline"
+      >
+        <Link to="/dashboard">Click here for more details.</Link>
+      </div>
     </div>
   );
 };
