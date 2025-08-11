@@ -17,6 +17,7 @@ export const Home = ({
     <div
       className={`bg-gradient-to-br ${backgroundClass} min-h-screen p-2 flex flex-col items-center`}
     >
+      {/*modal for the about app */}
       <div className="flex justify-end w-full">
         <button
           className="cursor-pointer"
@@ -44,7 +45,9 @@ export const Home = ({
             </p>
           </div>
         </dialog>
-      </div>
+      </div>{" "}
+      {/*end of modal */}
+      {/*main app interface*/}
       <div className="text-center mt-11">
         <h1 className="text-3xl font-bold text-white drop-shadow-sm">
           Amianan Forecast
@@ -53,7 +56,6 @@ export const Home = ({
           Ilocos Norte Weather App
         </h2>
       </div>
-
       <LocationSelector
         selected={selectedLocation}
         onChange={(value) => {
@@ -61,13 +63,11 @@ export const Home = ({
         }}
         locations={locations}
       />
-
       {loading && (
         <div className="text-center text-white font-semibold text-lg mt-4">
           Loading weather data...
         </div>
       )}
-
       {error && (
         <div
           className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md relative mt-4"
@@ -77,7 +77,6 @@ export const Home = ({
           <span className="block sm:inline ml-2">{error}</span>
         </div>
       )}
-
       {weatherData && (
         <div className="mt-1">
           <WeatherCard
@@ -86,7 +85,6 @@ export const Home = ({
           />
         </div>
       )}
-
       <Footer />
     </div>
   );
