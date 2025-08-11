@@ -87,13 +87,13 @@ export const Home = ({
           />
         </div>
       )}
-      <Footer />
       <div
         className="text-white text-center 
 underline"
       >
         <Link to="/dashboard">Click here for more details.</Link>
       </div>
+      <Footer />
     </div>
   );
 };
