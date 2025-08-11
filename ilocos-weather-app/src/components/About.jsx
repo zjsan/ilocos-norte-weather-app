@@ -1,5 +1,5 @@
 
-export const About = () => {
+export const Dashboard = () => {
   return (
     <div>
        <div className="bg-gray-100 p-8 rounded-xl w-full h-screen max-w-md text-center">
