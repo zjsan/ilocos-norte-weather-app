@@ -260,7 +260,7 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/dashboard" element={<About />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         
       </Routes>
     </BrowserRouter>
