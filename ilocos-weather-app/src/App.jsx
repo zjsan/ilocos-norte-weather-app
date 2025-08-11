@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { locations } from "./data/locations";
 import { weatherCodeMap } from "./data/weathercode";
-import {About} from "./components/About";
+import {Dashboard} from "./components/Dashboard";
 
 
 function App() {
@@ -260,7 +260,7 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<About />} />
         
       </Routes>
     </BrowserRouter>
