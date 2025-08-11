@@ -56,6 +56,7 @@ export const Home = ({
           Ilocos Norte Weather App
         </h2>
       </div>
+      {/* city and municipality selector - dropdown*/}
       <LocationSelector
         selected={selectedLocation}
         onChange={(value) => {
@@ -77,6 +78,7 @@ export const Home = ({
           <span className="block sm:inline ml-2">{error}</span>
         </div>
       )}
+      {/* weather card*/}
       {weatherData && (
         <div className="mt-1">
           <WeatherCard
