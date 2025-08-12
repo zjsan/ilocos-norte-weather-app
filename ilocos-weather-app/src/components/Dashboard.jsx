@@ -11,7 +11,6 @@ export const Dashboard = ({ weather }) => {
         <h2 className="text-xl font-bold text-gray-900 mb-4 text-white">
           Amianan Forecast Dashboard
         </h2>
-
         <img src={weathericon} className="w-14" alt="Weather Icon" />
       </div>
     </div>
