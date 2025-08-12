@@ -1,6 +1,6 @@
 import weathericon from "../assets/weather.png";
 
-export const Dashboard = () => {
+export const Dashboard = ({ weather }) => {
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 p-2 w-screen h-screen text-center">
       <div
