@@ -14,6 +14,7 @@ export const Dashboard = ({ weather }) => {
         <img src={weathericon} className="w-14" alt="Weather Icon" />
       </div>
 
+      {/* main body*/}
       <div className="text-white lg: flex lg:flex-row flex-col items-center justify-center">
         <div></div>
         <div></div>
