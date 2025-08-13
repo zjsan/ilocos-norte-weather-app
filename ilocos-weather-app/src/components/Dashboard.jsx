@@ -6,6 +6,74 @@ import { Menu, X } from "lucide-react"; // For mobile menu icons
 export const Dashboard = ({ weather }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Placeholder data for demonstration, replace with actual weather data
+  const defaultWeather = {
+    location: "Berlin, DE",
+    date: "2023-02-13 02:03 GMT",
+    current: {
+      temperature: 7,
+      condition: "broken clouds",
+      realFeel: 5,
+      wind: "3.09 m/s",
+      clouds: "75 %",
+      humidity: "91 %",
+    },
+    todayForecast: [
+      { time: "06:00", temp: 7, icon: "cloud" },
+      { time: "09:00", temp: 7, icon: "cloud" },
+      { time: "12:00", temp: 9, icon: "cloud" },
+      { time: "15:00", temp: 9, icon: "cloud" },
+      { time: "18:00", temp: 6, icon: "cloud" },
+      { time: "21:00", temp: 5, icon: "cloud" },
+    ],
+    weeklyForecast: [
+      {
+        day: "Tuesday",
+        temp: 7,
+        condition: "overcast clouds",
+        wind: "2.67 m/s",
+        humidity: "80 %",
+      },
+      {
+        day: "Wednesday",
+        temp: 5,
+        condition: "clear sky",
+        wind: "1.14 m/s",
+        humidity: "82 %",
+      },
+      {
+        day: "Thursday",
+        temp: 6,
+        condition: "clear sky",
+        wind: "2.02 m/s",
+        humidity: "78 %",
+      },
+      {
+        day: "Friday",
+        temp: 8,
+        condition: "overcast clouds",
+        wind: "3.28 m/s",
+        humidity: "80 %",
+      },
+      {
+        day: "Saturday",
+        temp: 7,
+        condition: "light rain",
+        wind: "7.28 m/s",
+        humidity: "89 %",
+      },
+      {
+        day: "Sunday",
+        temp: 5,
+        condition: "light rain",
+        wind: "10.94 m/s",
+        humidity: "75 %",
+      },
+    ],
+  };
+
+  const displayWeather = weather || defaultWeather;
+
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
       <div
@@ -55,6 +123,24 @@ export const Dashboard = ({ weather }) => {
           {/* Add other mobile menu items here if needed */}
         </div>
       )}
+
+      {/* Main content body */}
+      <div className="flex flex-col lg:flex-row lg:space-x-8 mt-4">
+        <div className="lg:w-2/5 flex flex-col space-y-6">
+          <div className="hidden lg:block relative w-full mb-6">
+            <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
+              <input
+                type="text"
+                placeholder="Enter location..."
+                className="flex-grow bg-transparent text-gray-800 outline-none pl-3 pr-2"
+              />
+              <button className="p-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white">
+                <Search size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
