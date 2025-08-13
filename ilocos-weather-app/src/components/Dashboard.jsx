@@ -1,4 +1,6 @@
 import weathericon from "../assets/weather.png";
+import { Search } from "lucide-react"; // For the search icon
+import { Menu, X } from "lucide-react"; // For mobile menu icons
 
 export const Dashboard = ({ weather }) => {
   return (
