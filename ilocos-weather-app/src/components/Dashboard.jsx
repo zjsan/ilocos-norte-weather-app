@@ -1,8 +1,11 @@
+import React, { useState } from "react";
 import weathericon from "../assets/weather.png";
 import { Search } from "lucide-react"; // For the search icon
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 
 export const Dashboard = ({ weather }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
       <div
