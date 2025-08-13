@@ -27,6 +27,34 @@ export const Dashboard = ({ weather }) => {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 bg-blue-900 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-6">
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute top-4 right-4 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            <X size={28} className="text-white" />
+          </button>
+          <div className="w-full max-w-sm">
+            <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
+              <input
+                type="text"
+                placeholder="Enter location..."
+                className="flex-grow bg-transparent text-gray-800 outline-none pl-3 pr-2"
+              />
+              <button className="p-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white">
+                <Search size={20} />
+              </button>
+            </div>
+            <p className="text-center text-gray-300 mt-2 text-sm">
+              e.g., Berlin, DE
+            </p>
+          </div>
+          {/* Add other mobile menu items here if needed */}
+        </div>
+      )}
     </div>
   );
 };
