@@ -11,18 +11,21 @@ export const Dashboard = ({ weather }) => {
       <div
         className="flex flex-row items-center  w-full justify-between
 
- items-end"
+ items-end mb-4"
       >
         <h2 className="text-xl font-bold text-gray-900 mb-4 text-white">
           Amianan Forecast Dashboard
         </h2>
         <img src={weathericon} className="w-14" alt="Weather Icon" />
       </div>
-
-      {/* main body*/}
-      <div className="text-white lg: flex lg:flex-row flex-col items-center justify-center">
-        <div></div>
-        <div></div>
+      {/* Mobile Navigation (Hamburger Menu) */}
+      <div className="lg:hidden flex justify-end mb-4">
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
     </div>
   );
