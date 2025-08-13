@@ -141,6 +141,35 @@ export const Dashboard = ({ weather }) => {
           </div>
         </div>
       </div>
+
+      {/* Current Weather Card */}
+      <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
+        <h3 className="text-lg font-semibold mb-3">CURRENT WEATHER</h3>
+        <p className="text-3xl font-bold mb-1">{displayWeather.location}</p>
+        <p className="text-lg mb-4">
+          Today{" "}
+          {new Date().toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+          })}
+        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-6xl font-extrabold">
+            {displayWeather.current.temperature}°C
+          </p>
+          <div className="flex flex-col items-center">
+            {/* Placeholder for weather icon, replace with actual icons */}
+            <svg
+              className="w-16 h-16 text-white"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
+            </svg>
+            <p className="text-lg">{displayWeather.current.condition}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
