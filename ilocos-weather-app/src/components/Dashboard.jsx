@@ -2,7 +2,7 @@ import weathericon from "../assets/weather.png";
 
 export const Dashboard = ({ weather }) => {
   return (
-    <div className="bg-gradient-to-br from-blue-400 to-purple-600 p-2 w-screen h-screen text-center">
+    <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
       <div
         className="flex flex-row items-center  w-full justify-between
 
