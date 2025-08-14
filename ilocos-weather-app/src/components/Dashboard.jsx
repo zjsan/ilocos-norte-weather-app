@@ -170,6 +170,8 @@ export const Dashboard = ({ weather }) => {
           </div>
         </div>
       </div>
+
+      {/* Air Conditions Card */}
     </div>
   );
 };
