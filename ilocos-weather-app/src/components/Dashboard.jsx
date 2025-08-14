@@ -208,6 +208,15 @@ export const Dashboard = ({ weather }) => {
             </p>
           </div>
         </div>
+        <div className="flex items-center space-x-2">
+          <span className="text-gray-300">💧</span>
+          <div>
+            <p className="text-sm text-gray-300">Humidity</p>
+            <p className="text-lg font-semibold">
+              {displayWeather.current.humidity}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
