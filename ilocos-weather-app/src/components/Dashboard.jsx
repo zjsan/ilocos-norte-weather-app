@@ -177,14 +177,35 @@ export const Dashboard = ({ weather }) => {
 
       {/* Air Conditions Card */}
       <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-6">
-        <h3>Air Conditions</h3>
-        <div>
-          <div>
-            <span>🌡️</span>
+        <h3 className="text-lg font-semibold mb-3">Air Conditions</h3>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex items-center space-x-2">
+            <span className="text-gray-300">🌡️</span>
             <div>
-              <p>Real Feel</p>
-              <p>{displayWeather.current.realFeel}°C</p>
+              <p className="text-sm text-gray-300">Real Feel</p>
+              <p className="text-lg font-semibold">
+                {" "}
+                {displayWeather.current.realFeel}°C
+              </p>
             </div>
+          </div>
+        </div>
+        <div className="flex items-center space-x-2">
+          <span className="text-gray-300">💨</span>
+          <div>
+            <p className="text-sm text-gray-300">Wind</p>
+            <p className="text-lg font-semibold">
+              {displayWeather.current.wind}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-2">
+          <span className="text-gray-300">☁️</span>
+          <div>
+            <p className="text-sm text-gray-300">Clouds</p>
+            <p className="text-lg font-semibold">
+              {displayWeather.current.clouds}
+            </p>
           </div>
         </div>
       </div>
