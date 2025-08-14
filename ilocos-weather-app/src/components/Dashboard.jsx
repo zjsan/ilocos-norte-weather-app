@@ -172,6 +172,18 @@ export const Dashboard = ({ weather }) => {
       </div>
 
       {/* Air Conditions Card */}
+      <div>
+        <h3>Air Conditions</h3>
+        <div>
+          <div>
+            <span>🌡️</span>
+            <div>
+              <p>Real Feel</p>
+              <p>{displayWeather.current.realFeel}°C</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
