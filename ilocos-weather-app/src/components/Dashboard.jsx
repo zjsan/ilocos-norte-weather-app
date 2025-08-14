@@ -143,9 +143,13 @@ export const Dashboard = ({ weather }) => {
       </div>
 
       {/* Current Weather Card */}
-      <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
-        <h3 className="text-lg font-semibold mb-3">CURRENT WEATHER</h3>
-        <p className="text-3xl font-bold mb-1">{displayWeather.location}</p>
+      <div className="bg-white bg-opacity-60 rounded-xl p-4 shadow-xl backdrop-blur-sm">
+        <h3 className="text-lg font-semibold mb-3 text-black">
+          CURRENT WEATHER
+        </h3>
+        <p className="text-3xl font-bold mb-1 text-black">
+          {displayWeather.location}
+        </p>
         <p className="text-lg mb-4">
           Today{" "}
           {new Date().toLocaleString("en-US", {
