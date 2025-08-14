@@ -172,7 +172,7 @@ export const Dashboard = ({ weather }) => {
       </div>
 
       {/* Air Conditions Card */}
-      <div>
+      <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-6">
         <h3>Air Conditions</h3>
         <div>
           <div>
