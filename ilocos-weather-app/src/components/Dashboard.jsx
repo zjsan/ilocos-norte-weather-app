@@ -236,6 +236,40 @@ export const Dashboard = ({ weather }) => {
             ))}
           </div>
         </div>
+        {/* Right column (Weekly Forecast) */}
+        <div className="lg:w-3/5 mt-6 lg:mt-0">
+          <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
+            <h3 className="text-lg font-semibold mb-3">WEEKLY FORECAST</h3>
+            <div className="space-y-3">
+              {displayWeather.weeklyForecast.map((day, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between py-2 border-b border-white border-opacity-30 last:border-b-0"
+                >
+                  <p className="w-1/5">{day.day}</p>
+                  <div className="flex items-center w-2/5">
+                    <p className="mr-2">{day.temp}°C</p>
+                    {/* Placeholder for daily weather icon */}
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
+                    </svg>
+                    <p className="ml-2 text-sm text-gray-300">
+                      {day.condition}
+                    </p>
+                  </div>
+                  <p className="w-1/5 text-right text-gray-300">{day.wind}</p>
+                  <p className="w-1/5 text-right text-gray-300">
+                    {day.humidity}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
