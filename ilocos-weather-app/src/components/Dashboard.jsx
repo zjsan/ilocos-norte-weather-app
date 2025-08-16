@@ -143,10 +143,10 @@ export const Dashboard = ({ weather }) => {
 
         {/* Current Weather Card */}
         <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
-          <h3 className="text-lg font-semibold mb-3 text-black">
+          <h3 className="text-lg font-semibold mb-3 text-white">
             CURRENT WEATHER
           </h3>
-          <p className="text-3xl font-bold mb-1 text-black">
+          <p className="text-3xl font-bold mb-1 text-white">
             {displayWeather.location}
           </p>
           <p className="text-lg mb-4">
