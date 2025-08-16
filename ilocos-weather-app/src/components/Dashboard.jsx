@@ -142,7 +142,7 @@ export const Dashboard = ({ weather }) => {
         </div>
 
         {/* Current Weather Card */}
-        <div className="bg-white bg-opacity-60 rounded-xl p-4 shadow-xl backdrop-blur-sm">
+        <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
           <h3 className="text-lg font-semibold mb-3 text-black">
             CURRENT WEATHER
           </h3>
@@ -175,7 +175,7 @@ export const Dashboard = ({ weather }) => {
         </div>
 
         {/* Air Conditions Card */}
-        <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-6">
+        <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-6">
           <h3 className="text-lg font-semibold mb-3">AIR CONDITIONS</h3>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center space-x-2">
@@ -217,7 +217,7 @@ export const Dashboard = ({ weather }) => {
           </div>
         </div>
 
-        <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-5">
+        <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-5">
           <h3 className="text-lg font-semibold mb-3">TODAY'S FORECAST</h3>
           <div className="flex overflow-x-auto pb-2 space-x-4">
             {displayWeather.todayForecast.map((hour, index) => (
@@ -238,13 +238,13 @@ export const Dashboard = ({ weather }) => {
         </div>
         {/* Right column (Weekly Forecast) */}
         <div className="lg:w-3/5 mt-6 lg:mt-0">
-          <div className="bg-white bg-opacity-20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
+          <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
             <h3 className="text-lg font-semibold mb-3">WEEKLY FORECAST</h3>
             <div className="space-y-3">
               {displayWeather.weeklyForecast.map((day, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between py-2 border-b border-white border-opacity-30 last:border-b-0"
+                  className="flex items-center justify-between py-2 border-b border-white/30 last:border-b-0"
                 >
                   <p className="w-1/5">{day.day}</p>
                   <div className="flex items-center w-2/5">
