@@ -125,9 +125,13 @@ export const Dashboard = ({ weather }) => {
       )}
 
       {/* Main content body */}
+       {/* Main content body - Restructured for lg screens */}
       <div className="flex flex-col lg:flex-row lg:space-x-8 mt-4">
+
+        {/* Left Column for lg screens (Search, Current Weather, Air Conditions) */}
         <div className="lg:w-2/5 flex flex-col space-y-6">
-          <div className="hidden lg:block relative w-full mb-6">
+          {/* Search Input - Hidden on mobile, visible on lg */}
+          <div className="hidden lg:block relative w-full">
             <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
               <input
                 type="text"
@@ -139,106 +143,110 @@ export const Dashboard = ({ weather }) => {
               </button>
             </div>
           </div>
-        </div>
 
-        {/* Current Weather Card */}
-        <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
-          <h3 className="text-lg font-semibold mb-3 text-white">
-            CURRENT WEATHER
-          </h3>
-          <p className="text-3xl font-bold mb-1 text-white">
-            {displayWeather.location}
-          </p>
-          <p className="text-lg mb-4">
-            Today{" "}
-            {new Date().toLocaleString("en-US", {
-              month: "short",
-              day: "numeric",
-            })}
-          </p>
-          <div className="flex items-center justify-between">
-            <p className="text-6xl font-extrabold">
-              {displayWeather.current.temperature}°C
+          {/* Current Weather Card */}
+          {/* bg-white/20 is a shorthand for bg-white bg-opacity-20 */}
+          <div className="rounded-xl p-4 shadow-xl backdrop-blur-sm bg-white/20">
+            <h3 className="text-lg font-semibold mb-3 text-white">
+              CURRENT WEATHER
+            </h3>
+            <p className="text-3xl font-bold mb-1 text-white">
+              {displayWeather.location}
             </p>
-            <div className="flex flex-col items-center">
-              {/* Placeholder for weather icon, replace with actual icons */}
-              <svg
-                className="w-16 h-16 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
-              </svg>
-              <p className="text-lg">{displayWeather.current.condition}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Air Conditions Card */}
-        <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-6">
-          <h3 className="text-lg font-semibold mb-3">AIR CONDITIONS</h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-300">🌡️</span>
-              <div>
-                <p className="text-sm text-gray-300">Real Feel</p>
-                <p className="text-lg font-semibold">
-                  {displayWeather.current.realFeel}°C
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-300">💨</span>
-              <div>
-                <p className="text-sm text-gray-300">Wind</p>
-                <p className="text-lg font-semibold">
-                  {displayWeather.current.wind}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-300">☁️</span>
-              <div>
-                <p className="text-sm text-gray-300">Clouds</p>
-                <p className="text-lg font-semibold">
-                  {displayWeather.current.clouds}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-300">💧</span>
-              <div>
-                <p className="text-sm text-gray-300">Humidity</p>
-                <p className="text-lg font-semibold">
-                  {displayWeather.current.humidity}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm mt-5">
-          <h3 className="text-lg font-semibold mb-3">TODAY'S FORECAST</h3>
-          <div className="flex overflow-x-auto pb-2 space-x-4">
-            {displayWeather.todayForecast.map((hour, index) => (
-              <div key={index} className="flex-shrink-0 text-center">
-                <p className="text-sm text-gray-300">{hour.time}</p>
-                {/* Placeholder for hourly weather icon */}
+            <p className="text-lg mb-4 text-gray-200">
+              Today{" "}
+              {new Date().toLocaleString("en-US", {
+                month: "short",
+                day: "numeric",
+              })}
+            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-6xl font-extrabold text-white">
+                {displayWeather.current.temperature}°C
+              </p>
+              <div className="flex flex-col items-center">
+                {/* Placeholder for weather icon, replace with actual icons */}
                 <svg
-                  className="w-8 h-8 text-white mx-auto"
+                  className="w-16 h-16 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
                 </svg>
-                <p className="text-md font-semibold">{hour.temp}°C</p>
+                <p className="text-lg text-white">{displayWeather.current.condition}</p>
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* Air Conditions Card */}
+          <div className="rounded-xl p-4 shadow-xl backdrop-blur-sm bg-white/20 mt-6 lg:mt-0">
+            <h3 className="text-lg font-semibold mb-3">AIR CONDITIONS</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-300">🌡️</span>
+                <div>
+                  <p className="text-sm text-gray-300">Real Feel</p>
+                  <p className="text-lg font-semibold">
+                    {displayWeather.current.realFeel}°C
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-300">💨</span>
+                <div>
+                  <p className="text-sm text-gray-300">Wind</p>
+                  <p className="text-lg font-semibold">
+                    {displayWeather.current.wind}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-300">☁️</span>
+                <div>
+                  <p className="text-sm text-gray-300">Clouds</p>
+                  <p className="text-lg font-semibold">
+                    {displayWeather.current.clouds}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-300">💧</span>
+                <div>
+                  <p className="text-sm text-gray-300">Humidity</p>
+                  <p className="text-lg font-semibold">
+                    {displayWeather.current.humidity}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* Right column (Weekly Forecast) */}
-        <div className="lg:w-3/5 mt-6 lg:mt-0">
-          <div className="bg-white/20 rounded-xl p-4 shadow-xl backdrop-blur-sm">
+
+        {/* Right Column for lg screens (Today's Forecast, Weekly Forecast) */}
+        <div className="lg:w-3/5 flex flex-col space-y-6 mt-6 lg:mt-0">
+          {/* Today's Forecast Card */}
+          <div className="rounded-xl p-4 shadow-xl backdrop-blur-sm bg-white/20">
+            <h3 className="text-lg font-semibold mb-3">TODAY'S FORECAST</h3>
+            <div className="flex overflow-x-auto pb-2 space-x-4">
+              {displayWeather.todayForecast.map((hour, index) => (
+                <div key={index} className="flex-shrink-0 text-center">
+                  <p className="text-sm text-gray-300">{hour.time}</p>
+                  {/* Placeholder for hourly weather icon */}
+                  <svg
+                    className="w-8 h-8 text-white mx-auto"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
+                  </svg>
+                  <p className="text-md font-semibold">{hour.temp}°C</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Weekly Forecast Card */}
+          <div className="rounded-xl p-4 shadow-xl backdrop-blur-sm bg-white/20">
             <h3 className="text-lg font-semibold mb-3">WEEKLY FORECAST</h3>
             <div className="space-y-3">
               {displayWeather.weeklyForecast.map((day, index) => (
