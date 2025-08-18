@@ -112,7 +112,7 @@ export const Dashboard = ({
             <X size={28} className="text-white" />
           </button>
           <div className="w-full max-w-sm">
-            <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
+            <div className="relative flex items-center rounded-full p-2 shadow-lg">
               {/* city and municipality selector - dropdown*/}
               <LocationSelector
                 selected={selectedLocation}
@@ -123,7 +123,7 @@ export const Dashboard = ({
               />
             </div>
             <p className="text-center text-gray-300 mt-2 text-sm">
-              e.g., Berlin, DE
+              e.g., "Vintar", "Laoag City", "Paoay"
             </p>
           </div>
           {/* Add other mobile menu items here if needed */}
@@ -138,14 +138,13 @@ export const Dashboard = ({
           {/* Search Input - Hidden on mobile, visible on lg */}
           <div className="hidden lg:block relative w-full">
             <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
-              <input
-                type="text"
-                placeholder="Enter location..."
-                className="flex-grow bg-transparent text-gray-800 outline-none pl-3 pr-2"
+              <LocationSelector
+                selected={selectedLocation}
+                onChange={(value) => {
+                  setSelectedLocation(value);
+                }}
+                locations={locations}
               />
-              <button className="p-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white">
-                <Search size={20} />
-              </button>
             </div>
           </div>
 
