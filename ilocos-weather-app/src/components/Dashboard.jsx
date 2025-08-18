@@ -139,6 +139,7 @@ export const Dashboard = ({
           <div className="hidden lg:block relative w-full">
             <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
               <LocationSelector
+                className="pl-11"
                 selected={selectedLocation}
                 onChange={(value) => {
                   setSelectedLocation(value);
