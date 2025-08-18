@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import weathericon from "../assets/weather.png";
 import { Search } from "lucide-react"; // For the search icon
 import { Menu, X } from "lucide-react"; // For mobile menu icons
+import LocationSelector from "../components/LocationSelector";
 
 export const Dashboard = ({ weather }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -125,9 +126,8 @@ export const Dashboard = ({ weather }) => {
       )}
 
       {/* Main content body */}
-       {/* Main content body - Restructured for lg screens */}
+      {/* Main content body - Restructured for lg screens */}
       <div className="flex flex-col lg:flex-row lg:space-x-8 mt-4">
-
         {/* Left Column for lg screens (Search, Current Weather, Air Conditions) */}
         <div className="lg:w-2/5 flex flex-col space-y-6">
           {/* Search Input - Hidden on mobile, visible on lg */}
@@ -173,7 +173,9 @@ export const Dashboard = ({ weather }) => {
                 >
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
                 </svg>
-                <p className="text-lg text-white">{displayWeather.current.condition}</p>
+                <p className="text-lg text-white">
+                  {displayWeather.current.condition}
+                </p>
               </div>
             </div>
           </div>

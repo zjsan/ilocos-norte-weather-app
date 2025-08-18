@@ -261,7 +261,12 @@ function App() {
         ></Route>
         <Route
           path="/dashboard"
-          element={<Dashboard weatherData={weatherData} />}
+          element={
+            <Dashboard
+              weatherData={weatherData}
+              selectedLocation={selectedLocation}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>
