@@ -4,7 +4,11 @@ import { Search } from "lucide-react"; // For the search icon
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 import LocationSelector from "../components/LocationSelector";
 
-export const Dashboard = ({ weather }) => {
+export const Dashboard = ({
+  weather,
+  selectedLocation,
+  setSelectedLocation,
+}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Placeholder data for demonstration, replace with actual weather data
@@ -108,14 +112,14 @@ export const Dashboard = ({ weather }) => {
           </button>
           <div className="w-full max-w-sm">
             <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
-              <input
-                type="text"
-                placeholder="Enter location..."
-                className="flex-grow bg-transparent text-gray-800 outline-none pl-3 pr-2"
+              {/* city and municipality selector - dropdown*/}
+              <LocationSelector
+                selected={selectedLocation}
+                onChange={(value) => {
+                  setSelectedLocation(value);
+                }}
+                locations={locations}
               />
-              <button className="p-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white">
-                <Search size={20} />
-              </button>
             </div>
             <p className="text-center text-gray-300 mt-2 text-sm">
               e.g., Berlin, DE
