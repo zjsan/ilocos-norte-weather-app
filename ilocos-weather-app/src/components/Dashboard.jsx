@@ -3,6 +3,7 @@ import weathericon from "../assets/weather.png";
 import { Search } from "lucide-react"; // For the search icon
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 import LocationSelector from "../components/LocationSelector";
+import { locations } from "../data/locations";
 
 export const Dashboard = ({
   weather,
