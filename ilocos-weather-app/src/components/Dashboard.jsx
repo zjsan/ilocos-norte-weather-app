@@ -137,7 +137,9 @@ export const Dashboard = ({
         <div className="lg:w-2/5 flex flex-col space-y-6">
           {/* Search Input - Hidden on mobile, visible on lg */}
           <div className="hidden lg:block relative w-full">
-            <div className="relative flex items-center bg-white rounded-full p-2 shadow-lg">
+            <div>
+              {" "}
+              {/* relative flex items-center bg-white rounded-full p-2 shadow-lg - old css style */}
               <LocationSelector
                 className="pl-11"
                 selected={selectedLocation}
