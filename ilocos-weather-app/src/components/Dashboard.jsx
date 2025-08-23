@@ -220,7 +220,7 @@ export const Dashboard = ({
                 <div>
                   <p className="text-sm text-gray-300">Humidity</p>
                   <p className="text-lg font-semibold">
-                    {displayWeather.current.humidity}
+                    {weatherData.humidity}
                   </p>
                 </div>
               </div>
