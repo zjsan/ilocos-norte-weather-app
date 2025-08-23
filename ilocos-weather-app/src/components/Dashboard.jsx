@@ -78,6 +78,15 @@ export const Dashboard = ({
     ],
   };
 
+    // If no data yet, show loading or fallback
+  if (!weatherData) {
+    return (
+      <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8 flex items-center justify-center">
+        <p className="text-xl">Loading weather data...</p>
+      </div>
+    );
+  }
+
   const displayWeather = weather || defaultWeather;
 
   console.log("Weather Type: ", weatherData.weatherType);
