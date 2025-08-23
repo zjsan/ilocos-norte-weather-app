@@ -164,7 +164,7 @@ function App() {
 
   // Effect to fetch weather based on location state and set up periodic refresh
   useEffect(() => {
-    const refreshIntervalMs = 10 * 60 * 1000; // 5 minutes interval for periodic refresh
+    const refreshIntervalMs = 10 * 60 * 1000; // 10 minutes interval for periodic refresh
     let intervalId;
 
     const fetchData = () => {
