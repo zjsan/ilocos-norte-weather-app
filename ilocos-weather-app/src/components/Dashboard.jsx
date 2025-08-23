@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import weathericon from "../assets/weather.png";
-import { Search } from "lucide-react"; // For the search icon
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 import LocationSelector from "../components/LocationSelector";
 import { locations } from "../data/locations";
@@ -9,6 +8,7 @@ export const Dashboard = ({
   weather,
   selectedLocation,
   setSelectedLocation,
+  weatherData
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -80,6 +80,7 @@ export const Dashboard = ({
 
   const displayWeather = weather || defaultWeather;
 
+  console.log("Weather Type: ", weatherData.weatherType)
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
       <div className="flex flex-row items-end  w-full justify-between mb-4">
