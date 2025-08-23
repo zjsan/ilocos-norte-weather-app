@@ -9,6 +9,7 @@ export const Dashboard = ({
   selectedLocation,
   setSelectedLocation,
   weatherData,
+  userlocation,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -78,8 +79,8 @@ export const Dashboard = ({
     ],
   };
 
-    // If no data yet, show loading or fallback
-  if (!weatherData ) {
+  // If no data yet, show loading or fallback
+  if (!weatherData) {
     return (
       <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8 flex items-center justify-center">
         <p className="text-xl">Loading weather data...</p>
@@ -88,7 +89,8 @@ export const Dashboard = ({
   }
 
   const displayWeather = weather || defaultWeather;
-  console.log(selectedLocation)
+  console.log(userlocation);
+  console.log(selectedLocation);
   console.log("Weather Type: ", weatherData.weatherType);
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
@@ -163,14 +165,12 @@ export const Dashboard = ({
               CURRENT WEATHER
             </h3>
             <p className="text-3xl font-bold mb-1 text-white">
-              {selectedLocation}
+              {selectedLocation
+                ? `Weather in ${selectedLocation.name}`
+                : ""}
             </p>
-            <p className="text-lg  text-gray-200">
-              {weatherData.date}
-            </p>
-            <p className="text-lg  text-gray-200">
-              {weatherData.time}
-            </p>
+            <p className="text-lg  text-gray-200">{weatherData.date}</p>
+            <p className="text-lg  text-gray-200">{weatherData.time}</p>
             <div className="flex items-center justify-between">
               <p className="text-6xl font-extrabold text-white">
                 {weatherData.temperature}°C
@@ -184,9 +184,7 @@ export const Dashboard = ({
                 >
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
                 </svg>
-                <p className="text-lg text-white">
-                  {weatherData.weatherType}
-                </p>
+                <p className="text-lg text-white">{weatherData.weatherType}</p>
               </div>
             </div>
           </div>
