@@ -8,7 +8,7 @@ export const Dashboard = ({
   weather,
   selectedLocation,
   setSelectedLocation,
-  weatherData
+  weatherData,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -80,7 +80,7 @@ export const Dashboard = ({
 
   const displayWeather = weather || defaultWeather;
 
-  console.log("Weather Type: ", weatherData.weatherType)
+  console.log("Weather Type: ", weatherData.weatherType);
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
       <div className="flex flex-row items-end  w-full justify-between mb-4">
@@ -166,7 +166,7 @@ export const Dashboard = ({
             </p>
             <div className="flex items-center justify-between">
               <p className="text-6xl font-extrabold text-white">
-                {displayWeather.current.temperature}°C
+                {weatherData.temperature}°C
               </p>
               <div className="flex flex-col items-center">
                 {/* Placeholder for weather icon, replace with actual icons */}
@@ -178,7 +178,7 @@ export const Dashboard = ({
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
                 </svg>
                 <p className="text-lg text-white">
-                  {displayWeather.current.condition}
+                  {weatherData.weatherType}
                 </p>
               </div>
             </div>
