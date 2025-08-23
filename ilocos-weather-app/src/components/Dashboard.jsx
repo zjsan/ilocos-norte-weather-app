@@ -193,7 +193,7 @@ export const Dashboard = ({
                 <div>
                   <p className="text-sm text-gray-300">Real Feel</p>
                   <p className="text-lg font-semibold">
-                    {displayWeather.current.realFeel}°C
+                    {weatherData.temperature}°C
                   </p>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export const Dashboard = ({
                 <div>
                   <p className="text-sm text-gray-300">Wind</p>
                   <p className="text-lg font-semibold">
-                    {displayWeather.current.wind}
+                    {weatherData.windSpeed}
                   </p>
                 </div>
               </div>
