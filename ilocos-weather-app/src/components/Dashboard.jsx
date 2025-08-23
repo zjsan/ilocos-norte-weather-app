@@ -82,12 +82,8 @@ export const Dashboard = ({
 
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
-      <div
-        className="flex flex-row items-center  w-full justify-between
-
- items-end mb-4"
-      >
-        <h2 className="text-xl font-bold text-gray-900 mb-4 text-white">
+      <div className="flex flex-row items-end  w-full justify-between mb-4">
+        <h2 className="text-xl font-bold  mb-4 text-white">
           Amianan Forecast Dashboard
         </h2>
         <img src={weathericon} className="w-14" alt="Weather Icon" />
