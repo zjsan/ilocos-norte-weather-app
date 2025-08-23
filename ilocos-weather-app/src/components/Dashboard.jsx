@@ -79,7 +79,7 @@ export const Dashboard = ({
   };
 
     // If no data yet, show loading or fallback
-  if (!weatherData) {
+  if (!weatherData ) {
     return (
       <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8 flex items-center justify-center">
         <p className="text-xl">Loading weather data...</p>
@@ -88,7 +88,7 @@ export const Dashboard = ({
   }
 
   const displayWeather = weather || defaultWeather;
-
+  console.log(selectedLocation)
   console.log("Weather Type: ", weatherData.weatherType);
   return (
     <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen text-white p-4 sm:p-6 lg:p-8">
@@ -163,7 +163,7 @@ export const Dashboard = ({
               CURRENT WEATHER
             </h3>
             <p className="text-3xl font-bold mb-1 text-white">
-              {displayWeather.location}
+              {selectedLocation}
             </p>
             <p className="text-lg  text-gray-200">
               {weatherData.date}
