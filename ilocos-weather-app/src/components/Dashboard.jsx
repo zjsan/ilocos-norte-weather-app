@@ -136,7 +136,6 @@ export const Dashboard = ({
         </div>
       )}
 
-      {/* Main content body */}
       {/* Main content body - Restructured for lg screens */}
       <div className="flex flex-col lg:flex-row lg:space-x-8 mt-4">
         {/* Left Column for lg screens (Search, Current Weather, Air Conditions) */}
@@ -166,12 +165,11 @@ export const Dashboard = ({
             <p className="text-3xl font-bold mb-1 text-white">
               {displayWeather.location}
             </p>
-            <p className="text-lg mb-4 text-gray-200">
-              Today{" "}
-              {new Date().toLocaleString("en-US", {
-                month: "short",
-                day: "numeric",
-              })}
+            <p className="text-lg  text-gray-200">
+              {weatherData.date}
+            </p>
+            <p className="text-lg  text-gray-200">
+              {weatherData.time}
             </p>
             <div className="flex items-center justify-between">
               <p className="text-6xl font-extrabold text-white">
