@@ -171,7 +171,7 @@ function App() {
     let intervalId;
 
     const fetchData = () => {
-      if (userlocation) {
+      if (userlocation && usingGeolocation) {
         // If userLocation is available, fetch weather for it
         fetchWeather(userlocation.lat, userlocation.lon, "Current Location");
         setSelectedLocation(null); // Ensure dropdown is not showing a selected city
