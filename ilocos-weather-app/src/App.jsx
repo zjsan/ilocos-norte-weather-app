@@ -206,7 +206,12 @@ function App() {
     intervalId = setInterval(fetchData, refreshIntervalMs);
 
     return () => clearInterval(intervalId);
-  }, [selectedLocation, userlocation, hasAttemptedGeolocation]); // Dependencies for this effect
+  }, [
+    selectedLocation,
+    userlocation,
+    hasAttemptedGeolocation,
+    usingGeolocation,
+  ]); // Dependencies for this effect
 
   // Function to determine background class based on weather type
   const getBackgroundClass = (weatherType) => {
