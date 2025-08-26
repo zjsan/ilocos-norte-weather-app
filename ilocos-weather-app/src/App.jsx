@@ -13,6 +13,7 @@ function App() {
   const [error, setError] = useState(null);
   const [userlocation, setUserLocation] = useState(null);
   const [hasAttemptedGeolocation, setHasAttemptedGeolocation] = useState(false); //to check if the geolocation is actie
+  const [usingGeolocation, setUsingGeolocation] = useState(true);
 
   const fetchWeather = async (lat, lon, locationName = "Current Location") => {
     setLoading(true);
@@ -186,6 +187,7 @@ function App() {
         setSelectedLocation(loc.name);
       } else if (selectedLocation) {
         // If a city is selected (either by default or user selection), fetch its weather
+
         const loc = locations.find((l) => l.name === selectedLocation);
         if (loc) {
           fetchWeather(loc.lat, loc.lon, loc.name);
