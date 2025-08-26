@@ -123,9 +123,11 @@ function App() {
           lat: position.coords.latitude,
           lon: position.coords.longitude,
         });
+        setUsingGeolocation(true);
       }),
         (GeolocationPositionError) => {
           setUserLocation(null);
+          setUsingGeolocation(false);
           let errorMessage = "Failed to retrieve your location";
 
           switch (GeolocationPositionError.code) {
@@ -192,6 +194,7 @@ function App() {
         if (loc) {
           fetchWeather(loc.lat, loc.lon, loc.name);
         }
+        setUsingGeolocation(false); // Ensure we know geolocation is not being used
         console.log("Selected from the dropdown");
       }
     };
