@@ -195,6 +195,7 @@ function App() {
           fetchWeather(loc.lat, loc.lon, loc.name);
         }
         setUsingGeolocation(false); // Ensure we know geolocation is not being used
+
         console.log("Selected from the dropdown");
       }
     };
