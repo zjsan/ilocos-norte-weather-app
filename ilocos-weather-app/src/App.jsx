@@ -118,28 +118,29 @@ function App() {
 
     //if activated or working do something here
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setUserLocation({
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
-        });
-        setUsingGeolocation(true);
-      }),
-        (GeolocationPositionError) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          });
+          setUsingGeolocation(true);
+        },
+        (error) => {
           setUserLocation(null);
           setUsingGeolocation(false);
           let errorMessage = "Failed to retrieve your location";
 
-          switch (GeolocationPositionError.code) {
-            case GeolocationPositionError.PERMISSION_DENIED:
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
               errorMessage =
                 "Permission to access location was denied. Please select from the dropdown.";
               break;
-            case GeolocationPositionError.POSITION_UNAVAILABLE:
+            case error.POSITION_UNAVAILABLE:
               errorMessage =
                 "Location information is unavailable. Please select from the dropdown.";
               break;
-            case GeolocationPositionError.TIMEOUT:
+            case error.TIMEOUT:
               errorMessage =
                 "The request to get user location timed out. Please select from the dropdown.";
               break;
@@ -149,9 +150,10 @@ function App() {
               break;
           }
           setError(errorMessage);
-          setSelectedLocation(locations[0].name); // Fallback to default selected location if geolocation fails
+          setSelectedLocation(locations[0].name); // fallback
         },
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }; // Options for geolocation}
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
     } else {
       setError(
         "Geolocation is not supported by your browser. Please select from the dropdown."
