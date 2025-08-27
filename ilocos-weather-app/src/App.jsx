@@ -125,6 +125,7 @@ function App() {
             lon: position.coords.longitude,
           });
           setUsingGeolocation(true);
+          setSelectedLocation(null); // reset dropdown selection
         },
         (error) => {
           setUserLocation(null);
@@ -173,10 +174,17 @@ function App() {
     let intervalId;
 
     const fetchData = () => {
-      if (userlocation && usingGeolocation) {
-        // If userLocation is available, fetch weather for it
+      if (selectedLocation) {
+        //Manual selection takes priority
+        const loc = locations.find((l) => l.name === selectedLocation);
+        if (loc) {
+          fetchWeather(loc.lat, loc.lon, loc.name);
+        }
+        setUsingGeolocation(false); // stop geolocation if user picked a location
+        console.log("Selected from the dropdown");
+      } else if (userlocation && usingGeolocation) {
+        // use geolocation when no manual location is selected
         fetchWeather(userlocation.lat, userlocation.lon, "Current Location");
-        //setSelectedLocation(null); // Ensure dropdown is not showing a selected city
         console.log("Geolocation is being used");
       } else if (
         hasAttemptedGeolocation &&
@@ -184,20 +192,10 @@ function App() {
         !selectedLocation &&
         locations.length > 0
       ) {
-        // If geolocation was attempted and failed, and no city is selected yet,
-        // default to the first city in the list.
+        // fallback to first city in the object if geolocation fails
         console.log("Using default location from the list");
         const loc = locations[0];
         setSelectedLocation(loc.name);
-      } else if (selectedLocation) {
-        // If a city is selected (either by default or user selection), fetch its weather
-        const loc = locations.find((l) => l.name === selectedLocation);
-        if (loc) {
-          fetchWeather(loc.lat, loc.lon, loc.name);
-        }
-        setUsingGeolocation(false); // Ensure we know geolocation is not being used
-
-        console.log("Selected from the dropdown");
       }
     };
 
