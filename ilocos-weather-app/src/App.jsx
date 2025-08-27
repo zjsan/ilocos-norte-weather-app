@@ -191,7 +191,6 @@ function App() {
         setSelectedLocation(loc.name);
       } else if (selectedLocation) {
         // If a city is selected (either by default or user selection), fetch its weather
-
         const loc = locations.find((l) => l.name === selectedLocation);
         if (loc) {
           fetchWeather(loc.lat, loc.lon, loc.name);
