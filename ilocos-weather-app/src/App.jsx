@@ -176,7 +176,7 @@ function App() {
       if (userlocation && usingGeolocation) {
         // If userLocation is available, fetch weather for it
         fetchWeather(userlocation.lat, userlocation.lon, "Current Location");
-        setSelectedLocation(null); // Ensure dropdown is not showing a selected city
+        //setSelectedLocation(null); // Ensure dropdown is not showing a selected city
         console.log("Geolocation is being used");
       } else if (
         hasAttemptedGeolocation &&
@@ -208,12 +208,7 @@ function App() {
     intervalId = setInterval(fetchData, refreshIntervalMs);
 
     return () => clearInterval(intervalId);
-  }, [
-    selectedLocation,
-    userlocation,
-    hasAttemptedGeolocation,
-    usingGeolocation,
-  ]); // Dependencies for this effect
+  }, [selectedLocation, userlocation, hasAttemptedGeolocation]); // Dependencies for this effect
 
   // Function to determine background class based on weather type
   const getBackgroundClass = (weatherType) => {
