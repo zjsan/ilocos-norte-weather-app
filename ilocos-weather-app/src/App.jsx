@@ -208,6 +208,23 @@ function App() {
     return () => clearInterval(intervalId);
   }, [selectedLocation, userlocation, hasAttemptedGeolocation]); // Dependencies for this effect
 
+  //to persist selected location when page refresh
+  useEffect(() => {
+    if (selectedLocation) {
+      localStorage.setItem("selectedLocation", selectedLocation);
+    }
+  }, [selectedLocation]);
+
+  useEffect(() => {
+    const savedLocation = localStorage.getItem("selectedLocation");
+    if (savedLocation) {
+      setSelectedLocation(savedLocation);
+      setUsingGeolocation(false); // force manual mode if user had chosen one before
+    } else {
+      getUserGeolocation(); // fall back to geolocation logic
+    }
+  }, []);
+
   // Function to determine background class based on weather type
   const getBackgroundClass = (weatherType) => {
     switch (weatherType) {
