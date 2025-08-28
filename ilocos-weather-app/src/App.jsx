@@ -215,6 +215,7 @@ function App() {
     }
   }, [selectedLocation]);
 
+  //getting selected location from local storage
   useEffect(() => {
     const savedLocation = localStorage.getItem("selectedLocation");
     if (savedLocation) {
