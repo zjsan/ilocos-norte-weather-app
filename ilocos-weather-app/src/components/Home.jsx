@@ -91,7 +91,9 @@ export const Home = ({
         className="text-white text-center 
 underline"
       >
-        <Link to="/dashboard">Click here for more details.</Link>
+        <Link to="/dashboard" className="text-gray-50 hover: text-gray-300">
+          Click here for more details.
+        </Link>
       </div>
       <Footer />
     </div>
