@@ -222,7 +222,7 @@ function App() {
       setSelectedLocation(savedLocation);
       setUsingGeolocation(false); // force manual mode if user had chosen one before
     } else {
-      getUserGeolocation(); // fall back to geolocation logic
+      getUserGeolocation(); // fall back to geolocation logic to get user's current long and lat
     }
   }, []);
 
