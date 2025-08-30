@@ -208,16 +208,16 @@ export const Dashboard = ({
                 <div>
                   <p className="text-sm text-gray-300">Wind</p>
                   <p className="text-lg font-semibold">
-                    {weatherData.windSpeed}
+                    {weatherData.windSpeed} km/h
                   </p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-gray-300">☁️</span>
+                <span className="text-gray-300">🌧️</span>
                 <div>
-                  <p className="text-sm text-gray-300">Clouds</p>
-                  <p className="text-lg font-semibold">
-                    {displayWeather.current.clouds}
+                  <p className="text-sm text-gray-300">Chances of Rain</p>
+                  <p className="text-lg font-semibold"> 
+                    {weatherData.precipitationProbability} %
                   </p>
                 </div>
               </div>
@@ -226,7 +226,7 @@ export const Dashboard = ({
                 <div>
                   <p className="text-sm text-gray-300">Humidity</p>
                   <p className="text-lg font-semibold">
-                    {weatherData.humidity}
+                    {weatherData.humidity} %
                   </p>
                 </div>
               </div>
