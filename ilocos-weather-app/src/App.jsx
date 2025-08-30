@@ -63,6 +63,7 @@ function App() {
 
       // Extract relevant data for the current hour
       const currentTemperature = data.hourly.temperature_2m[index];
+      const currentApparentTemperature = data.hourly.apparent_temperature[index];
       const currentPrecipitationProbability =
         data.hourly.precipitation_probability[index];
       const currentHumidity = data.hourly.relative_humidity_2m[index];
@@ -92,6 +93,7 @@ function App() {
       setWeatherData({
         city: locationName, // Use the selected city name
         temperature: currentTemperature,
+        realFeel: currentApparentTemperature,
         humidity: currentHumidity,
         windSpeed: currentWindSpeed,
         weatherType: weatherType,
