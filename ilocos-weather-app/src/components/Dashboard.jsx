@@ -166,7 +166,9 @@ export const Dashboard = ({
               CURRENT WEATHER
             </h3>
             <p className="text-3xl font-bold mb-1 text-white">
-              {selectedLocation ? `Weather in ${selectedLocation.name}` : ""}
+              {usingGeolocation
+                ? "Using your current location"
+                : `Weather in ${selectedLocation}`}
             </p>
             <p className="text-lg  text-gray-200">{weatherData.date}</p>
             <p className="text-lg  text-gray-200">{weatherData.time}</p>
@@ -193,7 +195,7 @@ export const Dashboard = ({
             <h3 className="text-lg font-semibold mb-3">Weather Details</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
-                <span className="text-gray-300">🌡️</span>
+                <span className="text-gray-300">🌡️</span> 
                 <div>
                   <p className="text-sm text-gray-300">Real Feel</p>
                   <p className="text-lg font-semibold">
