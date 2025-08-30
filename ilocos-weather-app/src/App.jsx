@@ -173,6 +173,7 @@ function App() {
     const refreshIntervalMs = 10 * 60 * 1000; // 10 minutes interval for periodic refresh
     let intervalId;
 
+    //weather app api call logic
     const fetchData = () => {
       if (selectedLocation) {
         //Manual selection takes priority
@@ -288,6 +289,7 @@ function App() {
             <Dashboard
               weatherData={weatherData}
               selectedLocation={selectedLocation}
+              usingGeolocation={usingGeolocation}
             />
           }
         />
