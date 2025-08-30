@@ -10,6 +10,7 @@ export const Dashboard = ({
   setSelectedLocation,
   weatherData,
   userlocation,
+  usingGeolocation,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -165,9 +166,7 @@ export const Dashboard = ({
               CURRENT WEATHER
             </h3>
             <p className="text-3xl font-bold mb-1 text-white">
-              {selectedLocation
-                ? `Weather in ${selectedLocation.name}`
-                : ""}
+              {selectedLocation ? `Weather in ${selectedLocation.name}` : ""}
             </p>
             <p className="text-lg  text-gray-200">{weatherData.date}</p>
             <p className="text-lg  text-gray-200">{weatherData.time}</p>
