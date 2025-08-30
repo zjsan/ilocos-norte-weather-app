@@ -21,7 +21,7 @@ function App() {
     setWeatherData(null);
 
     try {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,precipitation_probability &timezone=Asia/Manila&forecast_days=1&current_weather=true`;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,precipitation_probability&timezone=Asia/Manila&forecast_days=1&current_weather=true`;
       const res = await fetch(url);
       const data = await res.json();
 
@@ -63,7 +63,7 @@ function App() {
 
       // Extract relevant data for the current hour
       const currentTemperature = data.hourly.temperature_2m[index];
-      const currentPrecipitationProbability = data.hourly.precipitation_probability[data.hourly.time.indexOf(data.current_weather.time)];
+      const currentPrecipitationProbability = data.hourly.precipitation_probability[index]; 
       const currentHumidity = data.hourly.relative_humidity_2m[index];
       const currentWindSpeed = data.hourly.wind_speed_10m[index];
       const currentWeatherCode = data.hourly.weather_code[index];
