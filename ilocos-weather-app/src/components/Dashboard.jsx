@@ -195,7 +195,7 @@ export const Dashboard = ({
             <h3 className="text-lg font-semibold mb-3">Weather Details</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
-                <span className="text-gray-300">🌡️</span> 
+                <span className="text-gray-300">🌡️</span>
                 <div>
                   <p className="text-sm text-gray-300">Real Feel</p>
                   <p className="text-lg font-semibold">
@@ -216,7 +216,7 @@ export const Dashboard = ({
                 <span className="text-gray-300">🌧️</span>
                 <div>
                   <p className="text-sm text-gray-300">Chances of Rain</p>
-                  <p className="text-lg font-semibold"> 
+                  <p className="text-lg font-semibold">
                     {weatherData.precipitationProbability} %
                   </p>
                 </div>
@@ -240,10 +240,11 @@ export const Dashboard = ({
           <div className="rounded-xl p-4 shadow-xl backdrop-blur-sm bg-white/20">
             <h3 className="text-lg font-semibold mb-3">TODAY'S FORECAST</h3>
             <div className="flex overflow-x-auto pb-2 space-x-4">
-              {displayWeather.todayForecast.map((hour, index) => (
+              {weatherData?.todayForecast?.map((hour, index) => (
                 <div key={index} className="flex-shrink-0 text-center">
                   <p className="text-sm text-gray-300">{hour.time}</p>
-                  {/* Placeholder for hourly weather icon */}
+
+                  {/* Weather icon (placeholder for now, can swap with real icon map later) */}
                   <svg
                     className="w-8 h-8 text-white mx-auto"
                     fill="currentColor"
@@ -251,6 +252,7 @@ export const Dashboard = ({
                   >
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM16 10h-2V6h-4v4H8l4 4 4-4z" />
                   </svg>
+
                   <p className="text-md font-semibold">{hour.temp}°C</p>
                 </div>
               ))}
