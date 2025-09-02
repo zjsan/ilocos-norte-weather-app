@@ -63,7 +63,8 @@ function App() {
 
       // Extract relevant data for the current hour
       const currentTemperature = data.hourly.temperature_2m[index];
-      const currentApparentTemperature = data.hourly.apparent_temperature[index];
+      const currentApparentTemperature =
+        data.hourly.apparent_temperature[index];
       const currentPrecipitationProbability =
         data.hourly.precipitation_probability[index];
       const currentHumidity = data.hourly.relative_humidity_2m[index];
@@ -89,6 +90,31 @@ function App() {
       console.log(dateTime, formattedDate, formattedTime);
       console.log(lat);
       console.log(lon);
+
+      // Filter today's forecast (from hourly data)
+      const todayDate = new Date().toISOString().split("T")[0]; // e.g. "2025-08-23"
+
+      const todayForecast = data.hourly.time
+        .map((time, i) => {
+          const dateObj = new Date(time);
+          const dateStr = dateObj.toISOString().split("T")[0];
+
+          if (dateStr === todayDate) {
+            return {
+              time: dateObj.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                hour12: true,
+              }),
+              temp: data.hourly.temperature_2m[i],
+              realFeel: data.hourly.apparent_temperature[i],
+              precipitation: data.hourly.precipitation_probability[i],
+              weatherCode: data.hourly.weather_code[i],
+            };
+          }
+          return null;
+        })
+        .filter(Boolean); // remove nulls
+
       // Set the processed weather data
       setWeatherData({
         city: locationName, // Use the selected city name
