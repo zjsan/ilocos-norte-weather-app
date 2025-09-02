@@ -126,6 +126,7 @@ function App() {
         precipitationProbability: currentPrecipitationProbability,
         date: formattedDate,
         time: formattedTime,
+        todayForecast: todayForecast, // 👈 new!
       });
 
       console.log(data);
