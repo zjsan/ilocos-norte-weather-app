@@ -194,7 +194,7 @@ export const Dashboard = ({
           {/* Weather Details Card */}
           <div className="rounded-xl p-4 shadow-xl backdrop-blur-sm bg-white/20 mt-6 lg:mt-0">
             <h3 className="text-lg font-semibold mb-3">Weather Details</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-7">
               <div className="flex items-center space-x-2">
                 <span className="text-gray-300">🌡️</span>
                 <div>
