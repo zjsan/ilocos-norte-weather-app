@@ -200,7 +200,7 @@ export const Dashboard = ({
                 <div>
                   <p className="text-sm text-gray-300">Real Feel</p>
                   <p className="text-lg font-semibold">
-                    {weatherData.temperature}°C
+                    {weatherData.realFeel}°C
                   </p>
                 </div>
               </div>
