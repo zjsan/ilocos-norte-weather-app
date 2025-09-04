@@ -116,27 +116,22 @@ function App() {
         .filter(Boolean); // remove nulls
 
       //weekly forecast
-      const weeklyForecast = data.daily.time.map((time, i) => {
-        const dateObj = new Date(time);
-        const dayName = dateObj.toLocaleDateString("en-US", {
-          weekday: "short",
-        }); // e.g. Mon, Tue
-
-        return {
-          day: dayName,
-          temp: `${Math.round(
-            data.daily.temperature_2m_max[i]
-          )}° / ${Math.round(data.daily.temperature_2m_min[i])}°`,
-          condition: mapWeatherCodeToText(data.daily.weather_code[i]), // Translate code → description
-          icon: mapWeatherCodeToIcon(data.daily.weather_code[i]), // Translate code → icon
-          wind: data.daily.wind_speed_10m_max
-            ? `${data.daily.wind_speed_10m_max[i]} km/h`
-            : "--",
-          humidity: data.daily.precipitation_probability_max
-            ? `${data.daily.precipitation_probability_max[i]}%`
-            : "--",
-        };
-      });
+      const weeklyForecast =
+        data.daily?.time?.map((iso, i) => {
+          // Day label in API timezone (the daily date is safe to parse)
+          const dayLabel = new Date(iso).toLocaleDateString("en-US", {
+            weekday: "short",
+          });
+          const code = data.daily.weather_code?.[i];
+          return {
+            day: dayLabel, // e.g., "Mon"
+            tempMax: Math.round(data.daily.temperature_2m_max?.[i]),
+            tempMin: Math.round(data.daily.temperature_2m_min?.[i]),
+            weatherCode: code,
+            condition: weatherCodeMap[code] || "Unknown",
+            precipProb: data.daily.precipitation_probability_max?.[i] ?? null,
+          };
+        }) ?? [];
 
       // Set the processed weather data
       setWeatherData({
@@ -150,12 +145,13 @@ function App() {
         date: formattedDate,
         time: formattedTime,
         todayForecast: todayForecast,
+        weeklyForecast,
       });
 
-      setWeatherData((prev) => ({
-        ...prev,
-        weeklyForecast,
-      }));
+      // setWeatherData((prev) => ({
+      //   ...prev,
+      //   weeklyForecast,
+      // }));
       console.log(data);
     } catch (error) {
       console.error("Error fetching weather data:", error);
