@@ -115,6 +115,29 @@ function App() {
         })
         .filter(Boolean); // remove nulls
 
+      //weekly forecast
+      const weeklyForecast = data.daily.time.map((time, i) => {
+        const dateObj = new Date(time);
+        const dayName = dateObj.toLocaleDateString("en-US", {
+          weekday: "short",
+        }); // e.g. Mon, Tue
+
+        return {
+          day: dayName,
+          temp: `${Math.round(
+            data.daily.temperature_2m_max[i]
+          )}° / ${Math.round(data.daily.temperature_2m_min[i])}°`,
+          condition: mapWeatherCodeToText(data.daily.weather_code[i]), // Translate code → description
+          icon: mapWeatherCodeToIcon(data.daily.weather_code[i]), // Translate code → icon
+          wind: data.daily.wind_speed_10m_max
+            ? `${data.daily.wind_speed_10m_max[i]} km/h`
+            : "--",
+          humidity: data.daily.precipitation_probability_max
+            ? `${data.daily.precipitation_probability_max[i]}%`
+            : "--",
+        };
+      });
+
       // Set the processed weather data
       setWeatherData({
         city: locationName, // Use the selected city name
