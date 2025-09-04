@@ -149,9 +149,13 @@ function App() {
         precipitationProbability: currentPrecipitationProbability,
         date: formattedDate,
         time: formattedTime,
-        todayForecast: todayForecast, // 👈 new!
+        todayForecast: todayForecast,
       });
 
+      setWeatherData((prev) => ({
+        ...prev,
+        weeklyForecast,
+      }));
       console.log(data);
     } catch (error) {
       console.error("Error fetching weather data:", error);
