@@ -148,10 +148,6 @@ function App() {
         weeklyForecast,
       });
 
-      // setWeatherData((prev) => ({
-      //   ...prev,
-      //   weeklyForecast,
-      // }));
       console.log(data);
     } catch (error) {
       console.error("Error fetching weather data:", error);
