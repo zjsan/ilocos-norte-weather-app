@@ -281,7 +281,8 @@ export const Dashboard = ({
                     </div>
                     {/* If you don't fetch daily wind, show precip prob instead */}
                     <p className="w-1/5 text-right text-gray-300">
-                      {day.wind != null ? `${day.windSpeed}%` : "--"}
+                      <span className="text-gray-300">💨</span>
+                      {day.wind != null ? `${day.wind} km/h` : "--"}
                     </p>
                     {/* Or reuse humidity column label to show precip prob */}
                     <p className="w-1/5 text-right text-gray-300">
