@@ -129,6 +129,7 @@ function App() {
             tempMin: Math.round(data.daily.temperature_2m_min?.[i]),
             weatherCode: code,
             condition: weatherCodeMap[code] || "Unknown",
+            wind: data.daily.windspeed_10m_max[i],
             precipProb: data.daily.precipitation_probability_max?.[i] ?? null,
           };
         }) ?? [];
