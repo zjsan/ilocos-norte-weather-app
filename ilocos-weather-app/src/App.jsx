@@ -142,7 +142,6 @@ function App() {
         humidity: currentHumidity,
         windSpeed: currentWindSpeed,
         weatherType: weatherType,
-        weatherCode: currentWeatherCode,
         precipitationProbability: currentPrecipitationProbability,
         date: formattedDate,
         time: formattedTime,
