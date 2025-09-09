@@ -171,14 +171,18 @@ export const Dashboard = ({
                 ? "Using your current location"
                 : `Weather in ${selectedLocation}`}
             </p>
-            <p className="text-lg  text-gray-200">{weatherData.date}</p>
-            <p className="text-lg  text-gray-200">{weatherData.time}</p>
+            <p className="text-lg text-gray-200">{weatherData.date}</p>
+            <p className="text-lg text-gray-200">{weatherData.time}</p>
+
             <div className="flex items-center justify-between">
               <p className="text-6xl font-extrabold text-white">
                 {weatherData.temperature}°C
               </p>
+
               <div className="flex flex-col items-center">
-                {weatherIcons[weatherData.weatherCode] || "❓"}
+                <div className="text-6xl">
+                  {weatherIcons[weatherData.weatherCode] || "❓"}
+                </div>
                 <p className="text-lg text-white">{weatherData.weatherType}</p>
               </div>
             </div>
