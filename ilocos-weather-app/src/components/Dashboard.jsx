@@ -178,7 +178,7 @@ export const Dashboard = ({
                 {weatherData.temperature}°C
               </p>
               <div className="flex flex-col items-center">
-                {/* Placeholder for weather icon, replace with actual icons */}
+                {weatherIcons[weatherData.weatherCode] || "❓"}
                 <p className="text-lg text-white">{weatherData.weatherType}</p>
               </div>
             </div>
