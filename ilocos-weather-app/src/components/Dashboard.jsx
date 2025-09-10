@@ -90,7 +90,6 @@ export const Dashboard = ({
     );
   }
 
-  const displayWeather = weather || defaultWeather;
   console.log(userlocation);
   console.log(selectedLocation);
   console.log("Weather Type: ", weatherData.weatherType);
