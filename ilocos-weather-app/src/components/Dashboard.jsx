@@ -6,7 +6,6 @@ import { locations } from "../data/locations";
 import { weatherIcons } from "../data/weathericons";
 
 export const Dashboard = ({
-  weather,
   selectedLocation,
   setSelectedLocation,
   weatherData,
